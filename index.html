@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="./js/page-effectif.js"></script>
+</head>
+
+<body>
+
+    <header class="bg-[#0b1329] text-white p-4 flex items-center justify-between border-b-2">
+        <!-- Section Gauche : Logo + Titres -->
+        <div class="flex items-center space-x-3">
+            <!-- Icône / Logo vert -->
+            <div class="bg-emerald-500 rounded-full p-2 flex items-center justify-center w-10 h-10">
+                <img src="./images/ATLAS FC.svg" alt="logo de site">
+            </div>
+
+            <!-- Texte TACHKILA / ATLAS FC -->
+            <div>
+                <h1 class="font-bold text-lg tracking-wide leading-none">TACHKILA</h1>
+                <p class="text-xs text-gray-400 font-medium mt-1">ATLAS FC</p>
+            </div>
+        </div>
+
+        <div class="bg-[#17233f] border border-gray-700/50 rounded-lg p-1 flex items-center space-x-1">
+            <button class="bg-emerald-500 text-white font-semibold text-sm px-4 py-1.5 rounded-md">
+                <a href="./index.html">Effectif</a>
+            </button>
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="./pages/composition.html">Composition</a>
+            </button>
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="./pages/matchs.html">Matchs</a>
+            </button>
+        </div>
+
+
+        <div class="flex items-center space-x-4 text-xs font-bold">
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span>
+                <span>GB</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span>
+                <span>DEF</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
+                <span>MIL</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                <span>ATT</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-[#0b1329] text-white p-20">
+        <section class="">
+            <div class="flex justify-end mb-4">
+                <button class="btn-ajout bg-green-500 !p-3  text-white rounded-[10px] w-[20%]">Ajouter un
+                    joueur</button>
+            </div>
+            <div class="p-4 flex bg-[#343c4c] rounded-[10px] items-center">
+                <div class="w-[75%] mr-5">
+                    <input type="search" class="rounded-[6px] h-[40px] w-full border border-white outline-none px-2"
+                        placeholder="Recherche un joueur par nom..." name="search">
+                </div>
+                <div class="flex bg-[#0b1329] gap-6 rounded-[10px]">
+                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">Tous</button>
+                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">GB</button>
+                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">DEF</button>
+                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">MIL</button>
+                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">ATT</button>
+                </div>
+            </div>
+            <article class="article">
+
+            </article>
+            <div></div>
+            <!-- modale ---------------------------------modale-------------->
+            <div class="hidden modal-ajout bg-[#0B1357] rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[30%] 
+                    lg:w-[40%] md:w-1/2 
+                    ">
+                <div class="!p-4">
+                    <div class="flex justify-between !mb-5">
+                        <p>Ajouter un joueur</p>
+                        <button class="btn-hidden">⨉</button>
+                    </div>
+                    <form id="monForm">
+                        <div class="flex flex-col w-full">
+                            <label for="nom">Nom complet</label>
+                            <input type="text" placeholder="Ex: ANASS AOUJI" id="nom"
+                                class="border-2 rounded-[4px] !p-1 bg-[#343c4c]">
+                            <span class="text-red-500 text-sm error-name"></span>
+                        </div>
+                        <!-- post et numero -->
+                        <div class="!mt-7 flex w-full justify-between items-center mb-6">
+                            <!-- numero -->
+                            <div class="flex flex-col w-[48%]">
+                                <label for="num">Numéro (1 à 99)</label>
+                                <input type="number" name="numero" id="num" placeholder="EX.7"
+                                    class="border-1 rounded-[8px] !px-2 bg-[#343c4c] h-[32px]">
+                                <span class="text-red-500 text-sm error-number"></span>
+                            </div>
+                            <!-- post -->
+                            <div class="w-[48%]">
+                                <label class="block" for="post">Post</label>
+                                <select name="post" id="post"
+                                    class="border rounded-[8px] w-[100%] text-center bg-[#343c4c] h-[32px]">
+                                    <option>Choisir un post</option>
+                                    <option value="gardien">Gardien</option>
+                                    <option value="deffense">Deffenseur</option>
+                                    <option value="milieu">Milieu</option>
+                                    <option value="attaque">Attaque</option>
+                                </select>
+                                <span class="text-red-500 text-sm error-post"></span>
+                            </div>
+                        </div>
+                        <!-- age et status -->
+                        <div class="!mt-7 flex w-full justify-between items-center mb-10">
+                            <!-- Age -->
+                            <div class="flex flex-col w-[48%]">
+                                <label for="age">Age </label>
+                                <input type="number" name="age" id="age" placeholder="EX.24"
+                                    class="border-1 rounded-[8px] !px-2 bg-[#343c4c] h-[32px]">
+                                <span class="text-red-500 text-sm error-age"></span>
+                            </div>
+                            <!-- Status -->
+                            <div class="w-[48%]">
+                                <label class="block" for="status">Status</label>
+                                <select name="status" id="status"
+                                    class="border rounded-[8px] w-[100%] text-center bg-[#343c4c] h-[32px]">
+                                    <option>Choisir un status</option>
+                                    <option value="enforme">En forme</option>
+                                    <option value="blesse">Blesse</option>
+                                </select>
+                                <span class="text-red-500 text-sm error-status"></span>
+                            </div>
+                        </div>
+                        <div class="flex justify-end gap-2">
+                            <button type="reset"
+                                class="btn-annule bg-slate-600 !py-1 !px-2 rounded-[10px]">Annuler</button>
+                            <button class="bg-green-500 !py-1 !px-2 rounded-[10px]">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+</body>
+
+</html>
