@@ -127,7 +127,7 @@ export const joueurs = [
         numero: 14,
         poste: "MIL",
         age: 21,
-        statut: "Blessé",
+        statut: "Blesse",
         capitaine: false,
         position: null
     },

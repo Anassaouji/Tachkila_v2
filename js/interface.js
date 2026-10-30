@@ -1,3 +1,4 @@
+import { suprimer } from "./joueurs.js";
 
 
 export function modalOpenAndClose() {
@@ -44,4 +45,62 @@ export function initialiserModalAjout() {
     inputAge.value="";
     selectPost.value="";
     selectStatus.value="";
+}
+
+
+export function confirmDeleteJoueur(joueurs) {
+    let boutonSuppression = null;
+
+    document.addEventListener("click", function (event) {
+        const button = event.target.closest(".delete");
+
+        if (button) {
+            boutonSuppression = button;
+
+            const modal = document.querySelector("#modalDelete");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+    });
+
+    document.querySelector("#cancelDelete").addEventListener("click", function () {
+        const modal = document.querySelector("#modalDelete");
+
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        boutonSuppression = null;
+    });
+
+    document.querySelector("#confirmDelete").addEventListener("click", function () {
+        if (!boutonSuppression) return;
+        suprimer(boutonSuppression, joueurs);
+        console.log("hello");
+        
+        // const parent = boutonSuppression.closest(".parent");
+        // if (!parent) return;
+
+        // const index = Number(parent.dataset.index);
+        // const joueur = joueurs[index];
+
+        // Retirer le joueur du terrain
+        // retirerJoueurDuTerrain(joueur);
+
+        // Supprimer le joueur
+        // suprimer(boutonSuppression, joueurs);
+
+        // Afficher la notification
+        // notificationMsg(
+        //     "Joueur supprimé avec succès",
+        //     "bg-red-800",
+        //     "bg-green-600"
+        // );
+
+        // Fermer le modal
+        const modal = document.querySelector("#modalDelete");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        boutonSuppression = null;
+    });
 }
