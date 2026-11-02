@@ -72,17 +72,28 @@
                         placeholder="Recherche un joueur par nom..." name="search">
                 </div>
                 <div class="flex bg-[#0b1329] gap-6 rounded-[10px]">
-                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">Tous</button>
-                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">GB</button>
-                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">DEF</button>
-                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">MIL</button>
-                    <button class="bg-emerald-500 p-2 m-1 rounded-[10px]">ATT</button>
+                    <button class="btn-tous bg-emerald-500 p-2 m-1 rounded-[10px]">Tous</button>
+                    <button class="btn-gb bg-emerald-500 p-2 m-1 rounded-[10px]">GB</button>
+                    <button class="btn-def bg-emerald-500 p-2 m-1 rounded-[10px]">DEF</button>
+                    <button class="btn-mil bg-emerald-500 p-2 m-1 rounded-[10px]">MIL</button>
+                    <button class="btn-att bg-emerald-500 p-2 m-1 rounded-[10px]">ATT</button>
                 </div>
             </div>
-            <article class="article">
+            <article class="article h-[45vh]">
 
             </article>
-            <div></div>
+            <div class="flex justify-between items-center mt-10">
+                <div>
+                    <p>
+                        Affichage de <span class="parPage">8</span> sur <span class="nombreJoueurs">14</span> joueurs
+                    </p>
+                </div>
+                <div class="flex items-center gap-[8px]">
+                    <button class="precedent rounded-[5px] border border-gray-300 px-2 py-1 bg-cyan-950">Precedent</button>
+                    <p class="info-page"> Page <span class="page">1</span> / <span class="nPage">2 </span></p>
+                    <button class="suivant rounded-[5px] border border-gray-300 px-2 py-1 bg-cyan-950">Suivant</button>
+                </div>
+            </div>
             <!-- modale ---------------------------------modale-------------->
             <div class="hidden modal-ajout bg-[#0B1357] rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[30%] 
                     lg:w-[40%] md:w-1/2 

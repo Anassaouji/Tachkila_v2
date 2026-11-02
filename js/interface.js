@@ -27,6 +27,7 @@ export function modalOpenAndClose() {
     })
     btnHidden.addEventListener("click", () => {
         modalAjout.classList.add("hidden");
+        initialiserModalAjout();
     })
     btnAnulle.addEventListener("click", () => {
         modalAjout.classList.add("hidden");
@@ -40,15 +41,27 @@ export function initialiserModalAjout() {
     const selectPost = document.querySelector('select[name="post"]');
     const selectStatus = document.querySelector('select[name="status"]');
 
+    const errorName = document.querySelector(".error-name");
+    const errorNumber = document.querySelector(".error-number");
+    const errorAge = document.querySelector(".error-age");
+    const errorPost = document.querySelector(".error-post");
+    const errorStatus = document.querySelector(".error-status");
+
     inputName.value="";
     inputNumber.value="";
     inputAge.value="";
     selectPost.value="";
     selectStatus.value="";
+
+    errorName.textContent = "";
+    errorNumber.textContent = "";
+    errorAge.textContent = "";
+    errorPost.textContent = "";
+    errorStatus.textContent = "";
 }
 
 
-export function confirmDeleteJoueur(joueurs) {
+export function confirmDeleteJoueur(joueurs,actualiserAffichage) {
     let boutonSuppression = null;
 
     document.addEventListener("click", function (event) {
@@ -74,8 +87,7 @@ export function confirmDeleteJoueur(joueurs) {
 
     document.querySelector("#confirmDelete").addEventListener("click", function () {
         if (!boutonSuppression) return;
-        suprimer(boutonSuppression, joueurs);
-        console.log("hello");
+        suprimer(boutonSuppression, joueurs,actualiserAffichage);
         
         // const parent = boutonSuppression.closest(".parent");
         // if (!parent) return;

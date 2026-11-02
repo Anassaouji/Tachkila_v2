@@ -1,5 +1,7 @@
+import { actualiserAffichage } from "./affichage.js";
 import { confirmDeleteJoueur, modalOpenAndClose } from "./interface.js";
-import { afficherJoueur, ajouterJoueur, updateJoueur, colorise, coloriseStatut, capitan, coloriseCapitan } from "./joueurs.js";
+import { ajouterJoueur, updateJoueur, capitan, rechercheEtFilter } from "./joueurs.js";
+import { pagination } from "./pagination.js";
 import { enregistrerJoueurs, lireJoueurs, initialiserStockage } from "./stockage.js";
 
 
@@ -11,19 +13,23 @@ initialiserStockage();
 const joueurs = lireJoueurs();
 enregistrerJoueurs(joueurs);
 
-afficherJoueur(joueurs);
-
 modalOpenAndClose();
 
-ajouterJoueur(joueurs, modification);
 
-// deletJoueur(joueurs);
-confirmDeleteJoueur(joueurs);
+const currentPage = Number(sessionStorage.getItem("currentPage")) || 1;
+
+
+const actualiserListe = pagination(joueurs, 8, currentPage, actualiserAffichage);
+
+// Ajouter
+ajouterJoueur(joueurs, modification, actualiserAffichage);
+
+// Delete
+confirmDeleteJoueur(joueurs, actualiserListe);
 
 updateJoueur(joueurs, modification);
 
-colorise(joueurs);
-coloriseStatut(joueurs);
-
-coloriseCapitan(joueurs);
 capitan(joueurs);
+
+
+rechercheEtFilter(joueurs, actualiserListe);

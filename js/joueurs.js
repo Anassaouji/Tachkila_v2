@@ -12,7 +12,7 @@ export function afficherJoueur(joueurs) {
     articles.innerHTML = "";
     joueurs.forEach((joueur) => {
         const article = document.createElement("div");
-        article.classList.add("articlParent", "p-4", "rounded-[8px]", "bg-[#343c4c]");
+        article.classList.add("articlParent", "p-4", "rounded-[8px]", "bg-[#343c4c]", "max-h-[190px]");
         article.dataset.id = joueur.id;
         const articleHero = document.createElement("div");
         articleHero.classList.add("flex", "items-center")
@@ -33,15 +33,15 @@ export function afficherJoueur(joueurs) {
         paraAge.textContent = `Age : ${joueur.age} ans`;
 
         const divFoot = document.createElement("div");
-        divFoot.classList.add("flex", "items-center", "justify-between");
+        divFoot.classList.add("flex", "items-center", "justify-between", "mt-[30px]");
         const paraEnform = document.createElement("p");
         paraEnform.textContent = joueur.statut;
-        paraEnform.classList.add("px-[3px]", "rounded-[5px]", "mt-[10px]")
+        paraEnform.classList.add("px-[3px]", "rounded-[5px]")
         const divIcons = document.createElement("div");
         divIcons.classList.add("flex", "items-center", "gap-4");
         const paraCapitan = document.createElement("p");
         paraCapitan.textContent = "C";
-        paraCapitan.classList.add("capitane", "border", "w-[30px]", "text-center", "font-bold", "rounded-[6px]")
+        paraCapitan.classList.add("capitane", "border", "w-[30px]", "text-center", "font-bold", "rounded-[6px]", "cursor-pointer")
         const imgUpdate = document.createElement("img");
         imgUpdate.setAttribute("src", "./images/edit-2.svg");
         imgUpdate.classList.add("inline", "edit");
@@ -60,7 +60,7 @@ export function afficherJoueur(joueurs) {
 
 
 
-export function ajouterJoueur(joueurs, modification) {
+export function ajouterJoueur(joueurs, modification, actualiserAffichage) {
     // joueurs=[];
     const form = document.querySelector("#monForm");
 
@@ -74,9 +74,9 @@ export function ajouterJoueur(joueurs, modification) {
         const selectStatus = document.querySelector('select[name="status"]');
 
         const nom = validNom(inputName.value);
-        const nombre = validNumero(inputNumber.value);
+        const nombre = validNumero(inputNumber.value, joueurs, modification);
         const age = validAge(inputAge.value);
-        const post = validPost(selectPost.value);
+        const post = validPost(selectPost.value, joueurs);
         const status = validStatus(selectStatus.value);
         // let valid = true;
 
@@ -109,26 +109,18 @@ export function ajouterJoueur(joueurs, modification) {
             joueurs.push(joueur);
         }
         enregistrerJoueurs(joueurs);
-        afficherJoueur(joueurs);
+
+        actualiserAffichage();
+
         initialiserModalAjout();
     });
 
 }
 
 
-// export function deletJoueur(joueurs) {
-//     document.addEventListener("click", (event) => {
-
-//         const button = event.target.closest(".delete");
-//         if (button) {
-//             suprimer(button, joueurs);
-//         }
-
-//     })
-// }
 
 
-export function suprimer(btn, joueurs) {
+export function suprimer(btn, joueurs, actualiserAffichage) {
     const parent = btn.closest(".articlParent");
     const id = parent.dataset.id;
 
@@ -139,7 +131,7 @@ export function suprimer(btn, joueurs) {
     joueurs.splice(index, 1);
 
     enregistrerJoueurs(joueurs);
-    afficherJoueur(joueurs);
+    actualiserAffichage();
 }
 
 
@@ -267,7 +259,7 @@ export function coloriseCapitan(joueurs) {
     const joueur = joueurs.find((joueur) => joueur.capitaine === true);
     if (joueur) {
         const dataId = joueur.id;
-        const parent = document.querySelector(`[data-id="${dataId}"]`);      
+        const parent = document.querySelector(`[data-id="${dataId}"]`);
         if (parent) {
             const capitaine = parent.querySelector(".capitane");
             if (capitaine) {
@@ -275,4 +267,63 @@ export function coloriseCapitan(joueurs) {
             }
         }
     }
+}
+
+
+export function rechercheEtFilter(joueurs, actualiserListe) {
+
+    const inputSearch = document.querySelector("input[type='search']");
+
+    const btnTous = document.querySelector(".btn-tous");
+    const btnGb = document.querySelector(".btn-gb");
+    const btnDef = document.querySelector(".btn-def");
+    const btnMil = document.querySelector(".btn-mil");
+    const btnAtt = document.querySelector(".btn-att");
+
+    // État du filtre actuel
+    let posteActuel = "Tous";
+
+    // Fonction qui combine recherche et filtrage
+    function appliquerFiltres() {
+
+        const recherche = inputSearch.value.toLowerCase();
+        const joueursFiltres = joueurs.filter((joueur) => {
+            const rechercheNom = joueur.nom.toLowerCase().includes(recherche);
+            const filtrePoste = posteActuel === "Tous" || joueur.poste === posteActuel;
+            return rechercheNom && filtrePoste;
+        });
+
+        actualiserListe(joueursFiltres);
+    }
+
+    // Recherche
+    inputSearch.addEventListener("input", () => {
+        appliquerFiltres();
+    });
+
+    // Filtrage par poste
+    btnTous.addEventListener("click", () => {
+        posteActuel = "Tous";
+        appliquerFiltres();
+    });
+
+    btnGb.addEventListener("click", () => {
+        posteActuel = "GB";
+        appliquerFiltres();
+    });
+
+    btnDef.addEventListener("click", () => {
+        posteActuel = "DEF";
+        appliquerFiltres();
+    });
+
+    btnMil.addEventListener("click", () => {
+        posteActuel = "MIL";
+        appliquerFiltres();
+    });
+
+    btnAtt.addEventListener("click", () => {
+        posteActuel = "ATT";
+        appliquerFiltres();
+    });
 }

@@ -14,9 +14,13 @@ export function validNom(nom) {
     }
 }
 
-export function validNumero(numero) {
+export function validNumero(numero, joueurs, modification) {
     const validNumber = /^(?:[1-9][0-9]?)$/;
     const errorNumber = document.querySelector(".error-number");
+
+    const numeroExiste = joueurs.some((joueur, index) => {
+        return joueur.numero == numero && index !== modification.index;
+    });
     errorNumber.textContent = "";
     if (numero.trim() === "") {
         errorNumber.textContent = "vous devrez remplire le champs";
@@ -24,6 +28,10 @@ export function validNumero(numero) {
     else if (!validNumber.test(numero.trim())) {
         errorNumber.textContent = "le numero doit etre entre 1 et 99";
     }
+    else if (numeroExiste) {
+        errorNumber.textContent = "Ce numéro est déjà attribué à un autre joueur.";
+    }
+
     else {
         return Number(numero);
     }
@@ -42,11 +50,18 @@ export function validAge(age) {
         return Number(age);
     }
 }
-export function validPost(post) {
+
+export function validPost(post,joueurs) {
     const errorPost = document.querySelector(".error-post");
+    const gardiens = joueurs.filter((joueur)=>{
+        return joueur.poste == "GB";   
+    });
     errorPost.textContent = "";
     if (post === "") {
         errorPost.textContent = "vous devrez choisir un option";
+    }
+    else if(gardiens.length >=2){
+        errorPost.textContent = "vous avez depasse le nombre de Gardien a ajouter";
     }
     else {
         return post;
@@ -55,7 +70,7 @@ export function validPost(post) {
 export function validStatus(statut) {
     const errorStatus = document.querySelector(".error-status");
     errorStatus.textContent = "";
-    if (statut === "") {
+    if (statut === "") {        
         errorStatus.textContent = "vous devrez choisir un option";
     }
     else {
