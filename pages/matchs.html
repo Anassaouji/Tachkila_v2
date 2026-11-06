@@ -1,11 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="../js/match/page-matchs.js"></script>
 </head>
+
 <body>
-    
+    <header class="bg-[#0b1329] text-white p-4 flex items-center justify-between border-b-2">
+        <!-- Section Gauche : Logo + Titres -->
+        <div class="flex items-center space-x-3">
+            <!-- Icône / Logo vert -->
+            <div class="bg-emerald-500 rounded-full p-2 flex items-center justify-center w-10 h-10">
+                <img src="../images/ATLAS FC.svg" alt="logo de site">
+            </div>
+
+            <!-- Texte TACHKILA / ATLAS FC -->
+            <div>
+                <h1 class="font-bold text-lg tracking-wide leading-none">TACHKILA</h1>
+                <p class="text-xs text-gray-400 font-medium mt-1">ATLAS FC</p>
+            </div>
+        </div>
+
+        <div class="bg-[#17233f] border border-gray-700/50 rounded-lg p-1 flex items-center space-x-1">
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="../index.html">Effectif</a>
+            </button>
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="../pages/composition.html">Composition</a>
+            </button>
+            <button class="bg-emerald-500 rounded-md text-white font-semibold text-sm px-4 py-1.5">
+                <a href="../pages/matchs.html">Matchs</a>
+            </button>
+        </div>
+
+
+        <div class="flex items-center space-x-4 text-xs font-bold">
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span>
+                <span>GB</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span>
+                <span>DEF</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
+                <span>MIL</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                <span>ATT</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-[#0b1329]">
+        <section class="p-5">
+            <div class="w-full flex justify-end">
+                <button class="btn-ajout-match text-white bg-green-500 p-4 rounded-md mb-4">Ajouter un match</button>
+            </div>
+            <div class="flex items-center w-full h-[80px] bg-blue-500 rounded-md gap-[20px]">
+                <div id="filtres"
+                    class="w-[20%] h-[41px] bg-[#17233f] border border-gray-700/50 rounded-lg p-1 flex items-center justify-between ml-[20px]">
+                    <button class="bg-emerald-500 rounded-md text-white text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
+                        data-filtre="toutes">
+                        Toutes
+                    </button>
+                    <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
+                        data-filtre="avenir">
+                        A venir
+                    </button>
+                    <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
+                        data-filtre="jouee">
+                        Jouée
+                    </button>
+                </div>
+                <div class="w-[75%] h-[41px] mr-[20px]">
+                    <input type="search"
+                        class="h-full w-full bg-[#17233f] rounded-md border border-gray-300 text-white px-4"
+                        placeholder="Recherche un adversaire ...">
+                </div>
+            </div>
+            <div class="list-matchs">
+
+            </div>
+        </section>
+        <div class="modal-score hidden fixed top-[50%] right-[25%] bg-[#0b1329] w-[25%] h-[150px] text-white p-4 rounded-md">
+            <form id="modalS">
+                <div class="flex w-[100%] justify-between">
+                    <div class="res1 w-[45%]">
+                        <label for="score1">Equipe1</label>
+                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number" id="score1" 
+                        name="score" placeholder="entre un nombre">
+                    </div>
+                    <div class="res2 w-[45%]">
+                        <label for="score2">Equipe2</label>
+                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number" id="score2" 
+                        name="score" placeholder="entre un nombre">
+                    </div>
+                </div>
+                <div class="btnsScore flex justify-end gap-[10px] mt-10">
+                    <button class="anuleS bg-emerald-500 p-1 rounded-md" type="reset">Anuller</button>
+                    <button class="ajouterScore bg-emerald-500 p-1 rounded-md">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
+
 </html>

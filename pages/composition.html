@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- <script type="module" src="../js/match/page-matchs.js"></script> -->
 </head>
+
 <body>
-    
+    <header class="bg-[#0b1329] text-white p-4 flex items-center justify-between border-b-2">
+        <!-- Section Gauche : Logo + Titres -->
+        <div class="flex items-center space-x-3">
+            <!-- Icône / Logo vert -->
+            <div class="bg-emerald-500 rounded-full p-2 flex items-center justify-center w-10 h-10">
+                <img src="../images/ATLAS FC.svg" alt="logo de site">
+            </div>
+
+            <!-- Texte TACHKILA / ATLAS FC -->
+            <div>
+                <h1 class="font-bold text-lg tracking-wide leading-none">TACHKILA</h1>
+                <p class="text-xs text-gray-400 font-medium mt-1">ATLAS FC</p>
+            </div>
+        </div>
+
+        <div class="bg-[#17233f] border border-gray-700/50 rounded-lg p-1 flex items-center space-x-1">
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="../index.html">Effectif</a>
+            </button>
+            <button class="bg-emerald-500 rounded-md text-white font-semibold text-sm px-4 py-1.5 ">
+                <a href="../pages/composition.html">Composition</a>
+            </button>
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="../pages/matchs.html">Matchs</a>
+            </button>
+        </div>
+
+
+        <div class="flex items-center space-x-4 text-xs font-bold">
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span>
+                <span>GB</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span>
+                <span>DEF</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
+                <span>MIL</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                <span>ATT</span>
+            </div>
+        </div>
+    </header>
 </body>
+
 </html>
