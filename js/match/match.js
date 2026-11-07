@@ -64,8 +64,10 @@ export function afficherMatchs(matchs) {
         childRight2.classList.add("flex", "w-[12%]")
         const img1 = document.createElement("img");
         img1.setAttribute("src", "../images/edit-2.svg")
+        img1.classList.add("edit");
         const img2 = document.createElement("img");
         img2.setAttribute("src", "../images/trash-2.svg")
+        img2.classList.add("delete");
         childRight2.append(img1, img2);
         const divComposition = document.createElement("div");
         const lienC = document.createElement("a");
@@ -92,7 +94,7 @@ export function afficherMatchs(matchs) {
         return divmatches;
     });
     listMatches.replaceChildren(...divs);
-    
+
     // Changer d'onglet
     filtres.addEventListener("click", (e) => {
         if (e.target.tagName !== "BUTTON") return;
@@ -110,6 +112,7 @@ export function afficherMatchs(matchs) {
 export function ajouterMatch(matchs, modification) {
     // joueurs=[];
     const form = document.querySelector("#monForm");
+    const modalMatch = document.querySelector(".modal-match");
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -141,7 +144,7 @@ export function ajouterMatch(matchs, modification) {
             adversaire: adveresaire,
             date: date,
             heure: heure,
-            lieu:lieu,
+            lieu: lieu,
             domicile: domicile,
             butsAtlas: null,
             butsAdversaire: null,
@@ -158,17 +161,64 @@ export function ajouterMatch(matchs, modification) {
         enregistrerMatchs(matchs);
         afficherMatchs(matchs)
         form.reset();
+        modalMatch.classList.add("hidden");
     });
 
 }
 
 
+export function updateMatch(matchs, modification) {
+    document.addEventListener("click", (event) => {
+        const button = event.target.closest(".edit");
+        if (button) {
+
+            modification.index = edit(button, matchs);
+        }
+    })
+}
+
+export function edit(btn, matchs) {
+    const modalMatch = document.querySelector(".modal-match");
+    const parent = btn.closest(".divmatches");
+
+    const index = matchs.findIndex((match) => {
+        return match.id === parent.dataset.id;
+    });
+
+    const match = matchs[index];
+    const inputAdversaire = document.querySelector("#adversaire");
+    const inputDate = document.querySelector("#date");
+    const inputheure = document.querySelector("#heure");
+    const inputLieu = document.querySelector("#lieu");
+    const inputDomicile = document.querySelectorAll('input[name="domicile"]');
 
 
 
+    inputAdversaire.value = match.adversaire;
+    inputDate.value = match.date;
+    inputheure.value = match.heure;
+    inputLieu.value = match.lieu;
+    inputDomicile.forEach((domicile) => {
+        if (domicile.value === JSON.stringify(match.domicile)) {
+            domicile.checked = true
+        }
+    })
+
+    modalMatch.classList.remove("hidden");
+    return index;
+
+}
 
 
+export function deleteMatch(btn, matchs) {
+    const parent = btn.closest(".divmatches");
 
+    const index = matchs.findIndex((match) => {
+        return match.id === parent.dataset.id;
+    });
 
+    matchs.splice(index, 1);
 
-
+    enregistrerMatchs(matchs);
+    afficherMatchs(matchs);
+}

@@ -1,6 +1,6 @@
-import { openClosModalMatch } from "../interface.js";
+import { confirmDeleteMatch, openClosModalMatch } from "../interface.js";
 import { enregistrerMatchs, initialiserStockage, lireMatchs } from "../stockage.js";
-import { afficherMatchs, ajouterMatch } from "./match.js";
+import { afficherMatchs, ajouterMatch, updateMatch } from "./match.js";
 import { modalAjouterScore } from "./score.js";
 
 const modification = {
@@ -16,3 +16,5 @@ modalAjouterScore(matchs);
 openClosModalMatch()
 
 ajouterMatch(matchs,modification);
+updateMatch(matchs,modification);
+confirmDeleteMatch(matchs);

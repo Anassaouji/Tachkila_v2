@@ -1,4 +1,5 @@
 import { suprimer } from "./joueurs.js";
+import { deleteMatch } from "./match/match.js";
 
 
 export function modalOpenAndClose() {
@@ -135,31 +136,39 @@ export function openClosModalMatch() {
 }
 
 
+export function confirmDeleteMatch(matchs) {
+    let boutonSuppression = null;
 
-export function initialiserModalMatch() {
-    const inputAdversaire = document.querySelector("#adversaire");
-    const inputDate = document.querySelector("#date");
-    const inputheure = document.querySelector("#heure");
-    const inputLieu = document.querySelector("#lieu");
-    const inputDomicile = document.querySelectorAll('input[name="domicile"]');
+    document.addEventListener("click", function (event) {
+        const button = event.target.closest(".delete");
 
-    const erreurAdvers = document.querySelector(".error-advers");
-    const erreurDate = document.querySelector(".error-date");
-    const erreurHeure = document.querySelector(".error-heure");
-    const erreurLieu = document.querySelector(".error-lieu");
-    const erreurDomicile = document.querySelector(".error-domicile");
+        if (button) {
+            boutonSuppression = button;
 
+            const modal = document.querySelector("#modalDelete");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+    });
 
-    inputAdversaire.value = "";
-    inputDate.value = "";
-    inputheure.value = "";
-    inputLieu.value = "";
-    inputDomicile.forEach(domicile => domicile.checked = false);
+    document.querySelector("#cancelDelete").addEventListener("click", function () {
+        const modal = document.querySelector("#modalDelete");
 
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
 
-    erreurAdvers.textContent = "";
-    erreurDate.textContent = "";
-    erreurHeure.textContent = "";
-    erreurLieu.textContent = "";
-    erreurDomicile.textContent = "";
+        boutonSuppression = null;
+    });
+
+    document.querySelector("#confirmDelete").addEventListener("click", function () {
+        if (!boutonSuppression) return;
+        deleteMatch(boutonSuppression, matchs);
+
+        const modal = document.querySelector("#modalDelete");
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        boutonSuppression = null;
+    });
 }
+
