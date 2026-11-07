@@ -67,7 +67,8 @@
             <div class="flex items-center w-full h-[80px] bg-blue-500 rounded-md gap-[20px]">
                 <div id="filtres"
                     class="w-[20%] h-[41px] bg-[#17233f] border border-gray-700/50 rounded-lg p-1 flex items-center justify-between ml-[20px]">
-                    <button class="bg-emerald-500 rounded-md text-white text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
+                    <button
+                        class="bg-emerald-500 rounded-md text-white text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
                         data-filtre="toutes">
                         Toutes
                     </button>
@@ -90,18 +91,20 @@
 
             </div>
         </section>
-        <div class="modal-score hidden fixed top-[50%] right-[25%] bg-[#0b1329] w-[25%] h-[150px] text-white p-4 rounded-md">
+        <!-- Modal Score -->
+        <div
+            class="modal-score hidden fixed top-[50%] right-[25%] bg-[#0b1329] w-[25%] h-[150px] text-white p-4 rounded-md">
             <form id="modalS">
                 <div class="flex w-[100%] justify-between">
                     <div class="res1 w-[45%]">
                         <label for="score1">Equipe1</label>
-                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number" id="score1" 
-                        name="score" placeholder="entre un nombre">
+                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number"
+                            id="score1" name="score" placeholder="entre un nombre">
                     </div>
                     <div class="res2 w-[45%]">
                         <label for="score2">Equipe2</label>
-                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number" id="score2" 
-                        name="score" placeholder="entre un nombre">
+                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number"
+                            id="score2" name="score" placeholder="entre un nombre">
                     </div>
                 </div>
                 <div class="btnsScore flex justify-end gap-[10px] mt-10">
@@ -109,6 +112,67 @@
                     <button class="ajouterScore bg-emerald-500 p-1 rounded-md">Enregistrer</button>
                 </div>
             </form>
+        </div>
+        <!-- modale Ajouter Match ---------------------------------modale-------------->
+        <div class="hidden modal-match text-white bg-[#0B1357] rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[30%] 
+                    lg:w-[40%] md:w-1/2 ">
+            <div class="!p-4">
+                <div class="flex justify-between !mb-5">
+                    <p>Ajouter un Match</p>
+                    <button class="btn-hidden">⨉</button>
+                </div>
+                <form id="monForm">
+                    <div class="flex flex-col w-full">
+                        <label for="adversaire">Adversaire</label>
+                        <input type="text" placeholder="Ex: OCS .." id="adversaire"
+                            class="border-2 rounded-[4px] !p-1 bg-[#343c4c]">
+                        <span class="text-red-500 text-sm error-advers"></span>
+                    </div>
+                    <!-- date et heure -->
+                    <div class="!mt-7 flex w-full justify-between items-center mb-6">
+                        <!-- date -->
+                        <div class="flex flex-col w-[48%]">
+                            <label for="date">Date </label>
+                            <input type="date" name="date" id="date"
+                                class="border-1 rounded-[8px] !px-2 bg-[#343c4c] h-[32px]">
+                            <span class="text-red-500 text-sm error-date"></span>
+                        </div>
+                        <!-- heur -->
+                        <div class="w-[48%]">
+                            <label class="block" for="heure">Heure</label>
+                            <input type="time" name="heure" id="heure"
+                                class="border rounded-[8px] w-[100%] text-center bg-[#343c4c] h-[32px]">
+                            <span class="text-red-500 text-sm error-heure"></span>
+                        </div>
+                    </div>
+                    <!-- Lieu du match -->
+                    <div class="w-full">
+                        <label for="lieu">Lieu</label>
+                        <input type="text" name="lieu" placeholder="Ex: Safi..." id="lieu"
+                            class="border rounded-[8px] w-[100%] px-1 bg-[#343c4c] h-[32px] mb-6">
+                        <span class="text-red-500 text-sm error-lieu"></span>
+                    </div>
+                    <!-- A Domicile -->
+                    <div class="mb-7">
+                        <p>Lieu Du match</p>
+                        <div class="flex h-[32px] mt-2 gap-2">
+                            <div class="flex items-center w-1/2 gap-2 !px-4  border-1 rounded-[10px] bg-[#343c4c]">
+                                <input type="radio" value="true" name="domicile" id="domicile">
+                                <label for="domicile">Domicile</label>
+                            </div>
+                            <div class="flex items-center w-1/2 gap-2 !px-4 border-1 rounded-[10px] bg-[#343c4c]">
+                                <input type="radio" value="false" name="domicile" id="exterieur">
+                                <label for="exterieur">Exterieur</label>
+                            </div>
+                        </div>
+                        <span class="text-red-500 text-sm error-domicile"></span>
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <button type="reset" class="btn-annule bg-slate-600 !py-1 !px-2 rounded-[10px]">Annuler</button>
+                        <button class="bg-green-500 !py-1 !px-2 rounded-[10px]">Ajouter</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
 </body>

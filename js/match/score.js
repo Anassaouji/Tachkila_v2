@@ -106,7 +106,7 @@ export function modalAjouterScore(matchs) {
 
         // Fermer le modal
         modal.classList.add("hidden");
-
+        
         // Vider les inputs
         form.reset();
 

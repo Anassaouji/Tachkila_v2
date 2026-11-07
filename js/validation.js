@@ -51,16 +51,16 @@ export function validAge(age) {
     }
 }
 
-export function validPost(post,joueurs) {
+export function validPost(post, joueurs) {
     const errorPost = document.querySelector(".error-post");
-    const gardiens = joueurs.filter((joueur)=>{
-        return joueur.poste == "GB";   
+    const gardiens = joueurs.filter((joueur) => {
+        return joueur.poste == "GB";
     });
     errorPost.textContent = "";
     if (post === "") {
         errorPost.textContent = "vous devrez choisir un option";
     }
-    else if(gardiens.length >=2){
+    else if (gardiens.length >= 2) {
         errorPost.textContent = "vous avez depasse le nombre de Gardien a ajouter";
     }
     else {
@@ -70,7 +70,7 @@ export function validPost(post,joueurs) {
 export function validStatus(statut) {
     const errorStatus = document.querySelector(".error-status");
     errorStatus.textContent = "";
-    if (statut === "") {        
+    if (statut === "") {
         errorStatus.textContent = "vous devrez choisir un option";
     }
     else {
@@ -78,3 +78,85 @@ export function validStatus(statut) {
     }
 }
 
+
+
+
+
+// 1. Validation Adversaire
+export function validAdversaire(advers) {
+    const validAdvers = /^[a-zA-Z]+(?: [a-zA-Z]+)*$/;
+    const erreurAdvers = document.querySelector(".error-advers");
+
+    erreurAdvers.textContent = "";
+
+    if (advers.trim() === "") {
+        erreurAdvers.textContent = "Le nom de l'adversaire est obligatoire.";
+    }
+
+    else if (!validAdvers.test(advers.trim())) {
+        erreurAdvers.textContent = "Nom Adversaire Incorect.";
+    }
+    else {
+
+        return advers;
+    }
+}
+
+// 2. Validation Date
+export function validDate(date) {
+    const erreurDate = document.querySelector(".error-date");
+
+    erreurDate.textContent = "";
+
+    if (date === "") {
+        erreurDate.textContent = "Veuillez choisir une date.";
+    }
+    else {
+        return date;
+    }
+}
+
+// 3. Validation Heure
+export function validHeure(heure) {
+    const erreurHeure = document.querySelector(".error-heure");
+
+    erreurHeure.textContent = "";
+
+    if (heure === "") {
+        erreurHeure.textContent = "Veuillez choisir une heure.";
+    }
+    else {
+        return heure
+    }
+}
+
+// 4. Validation Lieu
+export function validLieu(lieu) {
+    const erreurLieu = document.querySelector(".error-lieu");
+
+    erreurLieu.textContent = "";
+
+    if (lieu.trim() === "") {
+        erreurLieu.textContent = "Le lieu est obligatoire.";
+    }
+    else {
+        return lieu;
+    }
+}
+
+// 5. Validation Domicile / Extérieur
+export function validDomicile(domicile) {
+    const erreurDomicile = document.querySelector(".error-domicile");
+
+    // const radioChecked = document.querySelector('input[name="domicile"]:checked');
+
+    erreurDomicile.textContent = "";
+
+    if (!domicile) {
+        erreurDomicile.textContent = "Veuillez choisir Domicile ou Extérieur.";
+    }
+    else {
+        // return JSON.parse(domicile.value)
+        return domicile.value ==="true";
+    }
+}

@@ -1,4 +1,6 @@
-import { colorMatch,modalAjouterScore } from "./score.js";
+import { enregistrerMatchs } from "../stockage.js";
+import { validAdversaire, validDate, validDomicile, validHeure, validLieu } from "../validation.js";
+import { colorMatch, modalAjouterScore } from "./score.js";
 
 let filtre = "toutes";
 const listMatches = document.querySelector(".list-matchs");
@@ -90,9 +92,7 @@ export function afficherMatchs(matchs) {
         return divmatches;
     });
     listMatches.replaceChildren(...divs);
-
-    modalAjouterScore(matchs);
-
+    
     // Changer d'onglet
     filtres.addEventListener("click", (e) => {
         if (e.target.tagName !== "BUTTON") return;
@@ -105,6 +105,63 @@ export function afficherMatchs(matchs) {
     // colorise la partie vectoire
     colorMatch(matchs);
 }
+
+
+export function ajouterMatch(matchs, modification) {
+    // joueurs=[];
+    const form = document.querySelector("#monForm");
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const inputAdversaire = document.querySelector("#adversaire");
+        const inputDate = document.querySelector("#date");
+        const inputheure = document.querySelector("#heure");
+        const inputLieu = document.querySelector("#lieu");
+        const inputDomicile = document.querySelector('input[name="domicile"]:checked');
+
+        const adveresaire = validAdversaire(inputAdversaire.value);
+        const date = validDate(inputDate.value);
+        const heure = validHeure(inputheure.value);
+        const lieu = validLieu(inputLieu.value);
+        const domicile = validDomicile(inputDomicile);
+
+        if (
+            adveresaire === undefined ||
+            date === undefined ||
+            heure === undefined ||
+            lieu === undefined ||
+            domicile === undefined
+        ) {
+            return;
+        }
+
+        const match = {
+            id: Date.now().toString(),
+            adversaire: adveresaire,
+            date: date,
+            heure: heure,
+            lieu:lieu,
+            domicile: domicile,
+            butsAtlas: null,
+            butsAdversaire: null,
+            composition: []
+        }
+        if (modification.index !== null) {
+            const index = modification.index;
+            matchs[index] = match;
+            modification.index = null;
+        }
+        else {
+            matchs.push(match);
+        }
+        enregistrerMatchs(matchs);
+        afficherMatchs(matchs)
+        form.reset();
+    });
+
+}
+
 
 
 

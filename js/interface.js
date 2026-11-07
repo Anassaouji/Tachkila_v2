@@ -47,11 +47,11 @@ export function initialiserModalAjout() {
     const errorPost = document.querySelector(".error-post");
     const errorStatus = document.querySelector(".error-status");
 
-    inputName.value="";
-    inputNumber.value="";
-    inputAge.value="";
-    selectPost.value="";
-    selectStatus.value="";
+    inputName.value = "";
+    inputNumber.value = "";
+    inputAge.value = "";
+    selectPost.value = "";
+    selectStatus.value = "";
 
     errorName.textContent = "";
     errorNumber.textContent = "";
@@ -61,7 +61,7 @@ export function initialiserModalAjout() {
 }
 
 
-export function confirmDeleteJoueur(joueurs,actualiserAffichage) {
+export function confirmDeleteJoueur(joueurs, actualiserAffichage) {
     let boutonSuppression = null;
 
     document.addEventListener("click", function (event) {
@@ -87,8 +87,8 @@ export function confirmDeleteJoueur(joueurs,actualiserAffichage) {
 
     document.querySelector("#confirmDelete").addEventListener("click", function () {
         if (!boutonSuppression) return;
-        suprimer(boutonSuppression, joueurs,actualiserAffichage);
-        
+        suprimer(boutonSuppression, joueurs, actualiserAffichage);
+
         // const parent = boutonSuppression.closest(".parent");
         // if (!parent) return;
 
@@ -115,4 +115,51 @@ export function confirmDeleteJoueur(joueurs,actualiserAffichage) {
 
         boutonSuppression = null;
     });
+}
+
+
+
+export function openClosModalMatch() {
+    const modalMatch = document.querySelector(".modal-match");
+    document.addEventListener('click', (e) => {
+        const btnAjout = e.target.closest(".btn-ajout-match");
+        const btnAnnule = e.target.closest(".btn-annule");
+        const btnHidden = e.target.closest(".btn-hidden");
+        if (btnAjout) {
+            modalMatch.classList.remove("hidden");
+        }
+        if (btnAnnule || btnHidden) {
+            modalMatch.classList.add("hidden");
+        }
+    })
+}
+
+
+
+export function initialiserModalMatch() {
+    const inputAdversaire = document.querySelector("#adversaire");
+    const inputDate = document.querySelector("#date");
+    const inputheure = document.querySelector("#heure");
+    const inputLieu = document.querySelector("#lieu");
+    const inputDomicile = document.querySelectorAll('input[name="domicile"]');
+
+    const erreurAdvers = document.querySelector(".error-advers");
+    const erreurDate = document.querySelector(".error-date");
+    const erreurHeure = document.querySelector(".error-heure");
+    const erreurLieu = document.querySelector(".error-lieu");
+    const erreurDomicile = document.querySelector(".error-domicile");
+
+
+    inputAdversaire.value = "";
+    inputDate.value = "";
+    inputheure.value = "";
+    inputLieu.value = "";
+    inputDomicile.forEach(domicile => domicile.checked = false);
+
+
+    erreurAdvers.textContent = "";
+    erreurDate.textContent = "";
+    erreurHeure.textContent = "";
+    erreurLieu.textContent = "";
+    erreurDomicile.textContent = "";
 }
