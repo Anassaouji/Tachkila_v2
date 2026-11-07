@@ -1,5 +1,4 @@
-
-// // Donnees de depart (a ajuster le jour du live : une echeance passee, une a venir)
+import { colorMatch,modalAjouterScore } from "./score.js";
 
 let filtre = "toutes";
 const listMatches = document.querySelector(".list-matchs");
@@ -15,8 +14,6 @@ export function afficherMatchs(matchs) {
         if (filtre === "jouee") return estPassee(match);
         return true;
     });
-
-
     const divs = visibles.map((match) => {
         const divmatches = document.createElement("div");
         divmatches.dataset.id = match.id;
@@ -76,17 +73,16 @@ export function afficherMatchs(matchs) {
         divComposition.append(lienC);
         const childRight1 = document.createElement("div");
         childRight1.classList.add("childright1", "flex", "flex-col", "gap-y-[20px]", "mr-4", "w-[84%]")
-        childRight1.append(divComposition);
+        const divScore = document.createElement("div");
+        divScore.classList.add("divScore")
+        childRight1.append(divScore, divComposition);
         childParent2.append(childRight1, childRight2)
 
         if (estPassee(match) && match.butsAtlas === null && match.butsAdversaire === null) {
-            const divScore = document.createElement("div");
-            divScore.classList.add("divScore")
             const btnScore = document.createElement("button");
             btnScore.classList.add("btnScore", "p-2", "rounded-md", "bg-blue-500")
             btnScore.textContent = "Saisir le Score";
             divScore.append(btnScore);
-            childRight1.prepend(divScore);
         }
 
 
@@ -99,7 +95,6 @@ export function afficherMatchs(matchs) {
 
     // Changer d'onglet
     filtres.addEventListener("click", (e) => {
-        console.log("gggg");
         if (e.target.tagName !== "BUTTON") return;
         filtre = e.target.dataset.filtre;
         filtres.querySelectorAll("button").forEach((b) => b.classList.remove("bg-emerald-500", "rounded-md", "text-white"));
@@ -116,94 +111,7 @@ export function afficherMatchs(matchs) {
 
 
 
-function modalAjouterScore(matchs) {
-    let match = null;
-    const modal = document.querySelector(".modal-score");
-    document.addEventListener("click", (e) => {
-        const button = e.target.closest(".btnScore");
-        const btnAnnuler = e.target.closest(".anuleS");
-        if (button) {
-            const parent = button.closest(".divmatches");
-            if (!parent) return;
-            const id = parent.dataset.id;
-            match = matchs.find(m => m.id == id);
-            if (!match) return;
-            modal.classList.remove("hidden");
-            console.log(match);
-        }
-        else if (btnAnnuler) {
-            modal.classList.add("hidden");
-            match = null;
-        }
-    });
-    const modalForm = document.querySelector("#modalS");
-    modalForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const scoreE1 = document.querySelector("#score1")
-        const scoreE2 = document.querySelector("#score2")
 
-        const score1 = Number(scoreE1.value);
-        const score2 = Number(scoreE2.value);
-        if (score1 === score2) {
-            match.butsAtlas = score1;
-            match.butsAdversaire = score2;
-        }
-        else if (match.domicile === true) {
-            match.butsAtlas = score1;
-            match.butsAdversaire = score2;
-        }
-        else {
-            match.butsAdversaire = score1;
-            match.butsAtlas = score2;
-        }
-
-    })
-
-}
-
-
-export function colorMatch(matchs) {
-    matchs.forEach((match) => {
-        if (match.butsAtlas != null || match.butsAdversaire != null) {
-            const parent = document.querySelector(`[data-id="${match.id}"]`);
-            if (!parent) return;
-            const childright1 = parent.querySelector(".childright1");
-            const divScore2 = document.createElement("div");
-            divScore2.classList.add("flex", "w-full", "justify-between", "h-[40px]", "items-center")
-            const pScore = document.createElement("p");
-            pScore.classList.add("pScore", "font-bold")
-            const pVectoir = document.createElement("p");
-            pVectoir.classList.add("pVectoir", "p-1", "bg-gray-600", "text-white", "rounded-md");
-            const pUpdateScore = document.createElement("p");
-            pUpdateScore.textContent = "Modifier le score"
-            if (match.butsAtlas === match.butsAdversaire) {
-                pVectoir.textContent = "Nul";
-                pVectoir.classList.add("bg-gray-600");
-                pScore.classList.add("bg-gray-600", "p-1", "rounded-md");
-            }
-            else if (match.butsAtlas > match.butsAdversaire) {
-                pVectoir.textContent = "Victoire";
-                pVectoir.classList.add("bg-green-600");
-                pScore.classList.add("bg-green-600", "p-1", "rounded-md");
-            }
-            else {
-                pVectoir.textContent = "Défaite";
-                pVectoir.classList.add("bg-red-600");
-                pScore.classList.add("bg-red-600", "p-1", "rounded-md");
-            }
-            if (match.domicile) {
-                pScore.textContent = `${match.butsAtlas} - ${match.butsAdversaire}`;
-            }
-            if (!match.domicile) {
-                pScore.textContent = `${match.butsAdversaire} - ${match.butsAtlas}`;
-            }
-
-            divScore2.append(pScore, pVectoir, pUpdateScore)
-            childright1.prepend(divScore2);
-        }
-    })
-
-}
 
 
 
