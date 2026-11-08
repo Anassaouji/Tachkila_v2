@@ -2,7 +2,7 @@
 import {
     joueurs,
     matchs
-} from "./donnees-initiales";
+} from "./donnees-initiales.js";
 
 export function initialiserStockage() {
     if (localStorage.getItem("joueurs") === null) {

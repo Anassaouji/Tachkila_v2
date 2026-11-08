@@ -127,7 +127,7 @@ export const joueurs = [
         numero: 14,
         poste: "MIL",
         age: 21,
-        statut: "Blessé",
+        statut: "Blesse",
         capitaine: false,
         position: null
     },
@@ -165,8 +165,8 @@ export const matchs = [
         heure: "17:00",
         lieu: "Stade municipal",
         domicile: false,
-        butsAtlas: 2,
-        butsAdversaire: 1,
+        butsAtlas: 5,
+        butsAdversaire: 7,
         composition: []
     },
     {
