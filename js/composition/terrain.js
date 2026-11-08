@@ -3,7 +3,7 @@ import { notificationMsg } from "./notification.js";
 
 export function creerDivJoueur(joueurs, joueur, posteCode) {
     const divselected = document.createElement("div");
-    divselected.classList.add("flex", "items-center", "text-white");
+    divselected.classList.add("flex", "items-center", "text-[inherit]");
     divselected.dataset.numero = joueur.numero;
     divselected.dataset.indexJoueur = joueurs.indexOf(joueur);
 
@@ -79,8 +79,8 @@ export function verifiPositionTerain(joueurG, jou, selec) {
 
         notificationMsg(
             "Cette position est déjà occupée !",
-            "bg-red-800",
-            "bg-red-800"
+            "bg-[#76283A]",
+            "bg-[#76283A]"
         );
         selec.value = "sur-bank";
 

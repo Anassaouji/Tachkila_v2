@@ -3,12 +3,12 @@
 .section .terrain {
     min-width: 700px;
     margin: 75px 40px 10px 40px;
-    background-color: #070d1f;
+    background-color: #0F172A;
     background-image: url(../images/terrain.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    border: 1px solid #ffffff45;
+    border: 1px solid #486581;
     padding: 10px;
     border-radius: 10px;
     display: grid;
@@ -41,78 +41,78 @@
 
 .col16 {
     grid-area: DG;
-    background-color: rgb(3, 3, 84) !important;
-    border: 3px dashed rgb(68, 130, 245) !important;
-    color: rgb(68, 130, 245);
+    background-color: #1B3557 !important;
+    border: 3px dashed #60A5FA !important;
+    color: #60A5FA;
 }
 
 .col39 {
     grid-area: DC1;
-    background-color: rgb(3, 3, 84) !important;
-    border: 3px dashed rgb(68, 130, 245) !important;
-    color: rgb(68, 130, 245);
+    background-color: #1B3557 !important;
+    border: 3px dashed #60A5FA !important;
+    color: #60A5FA;
 }
 
 .col63 {
     grid-area: DC2;
-    background-color: rgb(3, 3, 84) !important;
-    border: 3px dashed rgb(68, 130, 245) !important;
-    color: rgb(68, 130, 245);
+    background-color: #1B3557 !important;
+    border: 3px dashed #60A5FA !important;
+    color: #60A5FA;
 }
 
 .col88 {
     grid-area: DD;
-    background-color: rgb(3, 3, 84) !important;
-    border: 3px dashed rgb(68, 130, 245) !important;
-    color: rgb(68, 130, 245);
+    background-color: #1B3557 !important;
+    border: 3px dashed #60A5FA !important;
+    color: #60A5FA;
 }
 
 .col20 {
     grid-area: MG;
-    background-color: rgb(1, 45, 1) !important;
-    border: 3px dashed rgb(110, 247, 117) !important;
-    color: rgb(110, 247, 117);
+    background-color: #134235 !important;
+    border: 3px dashed #34D399 !important;
+    color: #34D399;
 }
 
 .col43 {
     grid-area: MC1;
-    background-color: rgb(1, 45, 1) !important;
-    border: 3px dashed rgb(110, 247, 117) !important;
-    color: rgb(110, 247, 117);
+    background-color: #134235 !important;
+    border: 3px dashed #34D399 !important;
+    color: #34D399;
 }
 
 .col67 {
     grid-area: MC2;
-    background-color: rgb(1, 45, 1) !important;
-    border: 3px dashed rgb(110, 247, 117) !important;
-    color: rgb(110, 247, 117);
+    background-color: #134235 !important;
+    border: 3px dashed #34D399 !important;
+    color: #34D399;
 }
 
 .col92 {
     grid-area: MD;
-    background-color: rgb(1, 45, 1) !important;
-    border: 3px dashed rgb(110, 247, 117) !important;
-    color: rgb(110, 247, 117);
+    background-color: #134235 !important;
+    border: 3px dashed #34D399 !important;
+    color: #34D399;
 }
 
 .col35 {
     grid-area: BU1;
-    background-color: rgb(63, 0, 0) !important;
-    border: 3px dashed rgb(255, 134, 134) !important;
-    color: rgb(255, 134, 134);
+    background-color: #512635 !important;
+    border: 3px dashed #FB7185 !important;
+    color: #FB7185;
 }
 
 .col83 {
     grid-area: BU2;
-    background-color: rgb(63, 0, 0) !important;
-    border: 3px dashed rgb(255, 134, 134) !important;
-    color: rgb(255, 134, 134);
+    background-color: #512635 !important;
+    border: 3px dashed #FB7185 !important;
+    color: #FB7185;
 }
 
 .col37 {
     grid-area: GB;
-    background-color: rgb(62, 62, 1) !important;
-    border: 3px dashed rgb(248, 248, 145) !important;
+    background-color: #FBBF24 !important;
+    border: 3px dashed #FBBF24 !important;
 }
 
 
@@ -140,23 +140,23 @@
 }
 
 .parent .child .child1 {
-    border: 3px solid rgb(190, 101, 37);
+    border: 3px solid #486581;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(190, 101, 37);
+    color: #CBD5E1;
 }
 
 .parent .child .child2>div:first-child {
     font-weight: bold;
 }
 
-.parent .child .child2>div:last-child {
-    color: rgb(190, 101, 37);
-}
+/* .parent .child .child2>div:last-child {
+    color: #CBD5E1;
+} */
 
 
 
