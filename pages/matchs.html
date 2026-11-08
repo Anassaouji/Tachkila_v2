@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="../js/match/page-matchs.js"></script>
+</head>
+
+<body>
+    <header class="bg-[#0b1329] text-white p-4 flex items-center justify-between border-b-2">
+        <!-- Section Gauche : Logo + Titres -->
+        <div class="flex items-center space-x-3">
+            <!-- Icône / Logo vert -->
+            <div class="bg-emerald-500 rounded-full p-2 flex items-center justify-center w-10 h-10">
+                <img src="../images/ATLAS FC.svg" alt="logo de site">
+            </div>
+
+            <!-- Texte TACHKILA / ATLAS FC -->
+            <div>
+                <h1 class="font-bold text-lg tracking-wide leading-none">TACHKILA</h1>
+                <p class="text-xs text-gray-400 font-medium mt-1">ATLAS FC</p>
+            </div>
+        </div>
+
+        <div class="bg-[#17233f] border border-gray-700/50 rounded-lg p-1 flex items-center space-x-1">
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="../index.html">Effectif</a>
+            </button>
+            <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white">
+                <a href="../pages/composition.html">Composition</a>
+            </button>
+            <button class="bg-emerald-500 rounded-md text-white font-semibold text-sm px-4 py-1.5">
+                <a href="../pages/matchs.html">Matchs</a>
+            </button>
+        </div>
+
+
+        <div class="flex items-center space-x-4 text-xs font-bold">
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span>
+                <span>GB</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-blue-500 rounded-full"></span>
+                <span>DEF</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
+                <span>MIL</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+                <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                <span>ATT</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-[#0b1329]">
+        <section class="p-5">
+            <div class="w-full flex justify-end">
+                <button class="btn-ajout-match text-white bg-green-500 p-4 rounded-md mb-4">Ajouter un match</button>
+            </div>
+            <div class="flex items-center w-full h-[80px] bg-blue-500 rounded-md gap-[20px]">
+                <div id="filtres"
+                    class="w-[20%] h-[41px] bg-[#17233f] border border-gray-700/50 rounded-lg p-1 flex items-center justify-between ml-[20px]">
+                    <button
+                        class="bg-emerald-500 rounded-md text-white text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
+                        data-filtre="toutes">
+                        Toutes
+                    </button>
+                    <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
+                        data-filtre="avenir">
+                        A venir
+                    </button>
+                    <button class="text-gray-300 font-semibold text-sm px-4 py-1.5 hover:text-white"
+                        data-filtre="jouee">
+                        Jouée
+                    </button>
+                </div>
+                <div class="w-[75%] h-[41px] mr-[20px]">
+                    <input type="search"
+                        class="searchMatch h-full w-full bg-[#17233f] rounded-md border border-gray-300 text-white px-4"
+                        placeholder="Recherche un adversaire ...">
+                </div>
+            </div>
+            <div class="list-matchs">
+
+            </div>
+        </section>
+        <!-- Modal Score -->
+        <div
+            class="modal-score hidden fixed top-[50%] right-[25%] bg-[#0b1329] w-[25%] h-[150px] text-white p-4 rounded-md">
+            <form id="modalS">
+                <div class="flex w-[100%] justify-between">
+                    <div class="res1 w-[45%]">
+                        <label for="score1">Equipe1</label>
+                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number"
+                            id="score1" name="score" placeholder="entre un nombre">
+                    </div>
+                    <div class="res2 w-[45%]">
+                        <label for="score2">Equipe2</label>
+                        <input class=" border border-gray-700 w-[100%] rounded-md bg-[#17233f] px-2" type="number"
+                            id="score2" name="score" placeholder="entre un nombre">
+                    </div>
+                </div>
+                <div class="btnsScore flex justify-end gap-[10px] mt-10">
+                    <button class="anuleS bg-emerald-500 p-1 rounded-md" type="reset">Anuller</button>
+                    <button class="ajouterScore bg-emerald-500 p-1 rounded-md">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+        <!-- modale Ajouter Match ---------------------------------modale-------------->
+        <div class="hidden modal-match text-white bg-[#0B1357] rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[30%] 
+                    lg:w-[40%] md:w-1/2 ">
+            <div class="!p-4">
+                <div class="flex justify-between !mb-5">
+                    <p>Ajouter un Match</p>
+                    <button class="btn-hidden">⨉</button>
+                </div>
+                <form id="monForm">
+                    <div class="flex flex-col w-full">
+                        <label for="adversaire">Adversaire</label>
+                        <input type="text" placeholder="Ex: OCS .." id="adversaire"
+                            class="border-2 rounded-[4px] !p-1 bg-[#343c4c]">
+                        <span class="text-red-500 text-sm error-advers"></span>
+                    </div>
+                    <!-- date et heure -->
+                    <div class="!mt-7 flex w-full justify-between items-center mb-6">
+                        <!-- date -->
+                        <div class="flex flex-col w-[48%]">
+                            <label for="date">Date </label>
+                            <input type="date" name="date" id="date"
+                                class="border-1 rounded-[8px] !px-2 bg-[#343c4c] h-[32px]">
+                            <span class="text-red-500 text-sm error-date"></span>
+                        </div>
+                        <!-- heur -->
+                        <div class="w-[48%]">
+                            <label class="block" for="heure">Heure</label>
+                            <input type="time" name="heure" id="heure"
+                                class="border rounded-[8px] w-[100%] text-center bg-[#343c4c] h-[32px]">
+                            <span class="text-red-500 text-sm error-heure"></span>
+                        </div>
+                    </div>
+                    <!-- Lieu du match -->
+                    <div class="w-full">
+                        <label for="lieu">Lieu</label>
+                        <input type="text" name="lieu" placeholder="Ex: Safi..." id="lieu"
+                            class="border rounded-[8px] w-[100%] px-1 bg-[#343c4c] h-[32px] mb-6">
+                        <span class="text-red-500 text-sm error-lieu"></span>
+                    </div>
+                    <!-- A Domicile -->
+                    <div class="mb-7">
+                        <p>Lieu Du match</p>
+                        <div class="flex h-[32px] mt-2 gap-2">
+                            <div class="flex items-center w-1/2 gap-2 !px-4  border-1 rounded-[10px] bg-[#343c4c]">
+                                <input type="radio" value="true" name="domicile" id="domicile">
+                                <label for="domicile">Domicile</label>
+                            </div>
+                            <div class="flex items-center w-1/2 gap-2 !px-4 border-1 rounded-[10px] bg-[#343c4c]">
+                                <input type="radio" value="false" name="domicile" id="exterieur">
+                                <label for="exterieur">Exterieur</label>
+                            </div>
+                        </div>
+                        <span class="text-red-500 text-sm error-domicile"></span>
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <button type="reset" class="btn-annule bg-slate-600 !py-1 !px-2 rounded-[10px]">Annuler</button>
+                        <button class="bg-green-500 !py-1 !px-2 rounded-[10px]">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de confirmation de suppression -->
+        <div id="modalDelete" class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center">
+
+            <div class="w-full max-w-md rounded-xl bg-sky-900 !p-6 !mx-4">
+
+                <!-- Titre -->
+                <h2 class="text-xl font-bold text-white !mb-3">
+                    Confirmer la suppression
+                </h2>
+
+                <!-- Message -->
+                <p class="text-white !mb-6">
+                    Êtes-vous sûr de vouloir supprimer ce Match ?
+                    Cette action est irréversible.
+                </p>
+
+                <!-- Boutons -->
+                <div class="flex justify-end gap-3">
+
+                    <button id="cancelDelete" type="button" class="rounded-lg border border-gray-300 !px-4 !py-2
+                           text-white hover:bg-gray-100">
+                        Annuler
+                    </button>
+
+                    <button id="confirmDelete" type="button" class="rounded-lg bg-red-600 !px-4 !py-2
+                           text-white hover:bg-red-700">
+                        Confirmer
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
