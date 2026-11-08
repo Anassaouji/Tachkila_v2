@@ -72,8 +72,8 @@ export function confirmDeleteJoueur(joueurs, divAremplace) {
         // Afficher la notification
         notificationMsg(
             "Joueur supprimé avec succès",
-            "bg-red-800",
-            "bg-green-600"
+            "bg-[#76283A]",
+            "bg-[#2F855A]"
         );
 
         // Fermer le modal

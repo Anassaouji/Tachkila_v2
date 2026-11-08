@@ -24,7 +24,7 @@ export function afficherJoueurs(joueurs, divAremplace) {
 
     joueurs.forEach((ele, index) => {
         const divParent = document.createElement("div");
-        divParent.classList.add("border-1", "border-neutral-300", "!mt-[20px]", "rounded-[10px]", "!p-[15px]")
+        divParent.classList.add("border-1", "border-[#486581]", "!mt-[20px]", "rounded-[10px]", "!p-[15px]")
         const divpere = document.createElement("div");
         divpere.classList.add("flex", "justify-between")
         divParent.classList.add("parent");
@@ -44,15 +44,27 @@ export function afficherJoueurs(joueurs, divAremplace) {
 
         const souChild2 = document.createElement("div");
         souChild2.textContent = ele.poste;
-
+        souChild2.classList.add("font-bold");
+        if(ele.poste ==="GB"){
+            souChild2.classList.add("text-[#FBBF24]");
+        }
+        else if(ele.poste ==="DEF"){
+            souChild2.classList.add("text-[#60A5FA]");
+        }
+        else if(ele.poste ==="MIL"){
+            souChild2.classList.add("text-[#34D399]");
+        }
+        else if(ele.poste ==="ATT"){
+            souChild2.classList.add("text-[#FB7185]");
+        }
         child2.append(souChild1, souChild2);
         divChild1.append(child1, child2);
 
         const divChild2 = document.createElement("div");
-        divChild2.classList.add("child", "size-fit", "p-1", "rounded-md", "bg-green-700");
+        divChild2.classList.add("child", "size-fit", "p-1", "rounded-md", "bg-[#2F855A]");
         divChild2.textContent = `${ele.statut}`
         if (ele.statut === "Blesse") {
-            divChild2.classList.add("bg-red-700")
+            divChild2.classList.add("bg-[#76283A]")
         }
         
         if (ele.statut === "Blesse") {
@@ -60,7 +72,7 @@ export function afficherJoueurs(joueurs, divAremplace) {
         }
 
         const select = document.createElement("select");
-        select.classList.add("select", "w-full", "!mt-2", "bg-slate-800", "border", "rounded-[6px]", "!p-2");
+        select.classList.add("select", "w-full", "!mt-2", "bg-[#243B53]", "border", "rounded-[6px]", "!p-2");
         select.name = "post-name";
         // options
         const option1 = document.createElement("option");

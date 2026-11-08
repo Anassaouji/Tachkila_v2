@@ -8,7 +8,7 @@ const notification = document.createElement("p");
 notification.classList.add(
         "z-50",
         "fixed",
-        "text-white",
+        "text-[#F8FAFC]",
         "text-center",
         "rounded-[10px]",
 
