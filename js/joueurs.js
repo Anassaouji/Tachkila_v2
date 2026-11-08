@@ -12,7 +12,7 @@ export function afficherJoueur(joueurs) {
     articles.innerHTML = "";
     joueurs.forEach((joueur) => {
         const article = document.createElement("div");
-        article.classList.add("articlParent", "p-4", "rounded-[8px]", "bg-[#343c4c]", "max-h-[190px]");
+        article.classList.add("articlParent", "p-4", "rounded-[8px]", "bg-[#1E293B]", "max-h-[190px]");
         article.dataset.id = joueur.id;
         const articleHero = document.createElement("div");
         articleHero.classList.add("flex", "items-center")
@@ -178,16 +178,16 @@ export function modifier(btn, joueurs) {
 export function colorise(joueurs) {
     joueurs.forEach((joueur) => {
         if (joueur.poste === "GB") {
-            recupereElementToStyling(joueur, "#F4A62A", "#6D3B3A")
+            recupereElementToStyling(joueur, "#FBBF24", "#483710")
         }
         else if (joueur.poste === "DEF") {
-            recupereElementToStyling(joueur, "#46C2DA", "#1E2978")
+            recupereElementToStyling(joueur, "#60A5FA", "#1B3557")
         }
         else if (joueur.poste === "MIL") {
-            recupereElementToStyling(joueur, "#66D47E", "#114B5F");
+            recupereElementToStyling(joueur, "#34D399", "#134235");
         }
         else if (joueur.poste === "ATT") {
-            recupereElementToStyling(joueur, "#F87171", "#A80139");
+            recupereElementToStyling(joueur, "#FB7185", "#512635");
 
         }
     })
@@ -213,7 +213,7 @@ export function coloriseStatut(joueurs) {
             const parent = document.querySelector(`[data-id="${index}"]`);
             const lastElement = parent.lastElementChild;
             const firtInlast = lastElement.firstElementChild
-            firtInlast.style.cssText = "color :#bbf451; background-color:#0d542b"
+            firtInlast.style.cssText = "color :#F8FAFC; background-color:#2F855A"
 
         }
         else if (joueur.statut === "Blesse") {
@@ -221,7 +221,7 @@ export function coloriseStatut(joueurs) {
             const parent = document.querySelector(`[data-id="${index}"]`);
             const lastElement = parent.lastElementChild;
             const firtInlast = lastElement.firstElementChild
-            firtInlast.style.cssText = "color :#ffa2a2; background-color:#9f0712"
+            firtInlast.style.cssText = "color :#FFACB5; background-color:#612D39"
 
         }
     })
@@ -236,7 +236,7 @@ export function capitan(joueurs) {
             });
             document.querySelectorAll(".capitane").forEach((btn) => {
                 // button.style.backgroundColor = "";
-                btn.classList.remove("bg-green-700");
+                btn.classList.remove("bg-[#2F855A]");
             });
             const parent = btn.closest(".articlParent");
             const dataID = parent.dataset.id;
@@ -246,7 +246,7 @@ export function capitan(joueurs) {
             const joueur = joueurs[index];
             if (joueur) {
                 joueur.capitaine = true;
-                btn.classList.add("bg-green-700");
+                btn.classList.add("bg-[#2F855A]");
                 enregistrerJoueurs(joueurs);
             }
         }
@@ -265,7 +265,7 @@ export function coloriseCapitan(joueurs) {
         if (parent) {
             const capitaine = parent.querySelector(".capitane");
             if (capitaine) {
-                capitaine.classList.add("bg-green-700")
+                capitaine.classList.add("bg-[#2F855A]")
             }
         }
     }

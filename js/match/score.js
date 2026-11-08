@@ -10,24 +10,24 @@ export function colorMatch(matchs) {
             const pScore = document.createElement("p");
             pScore.classList.add("pScore", "font-bold")
             const pVectoir = document.createElement("p");
-            pVectoir.classList.add("pVectoir", "p-1", "bg-gray-600", "text-white", "rounded-md");
+            pVectoir.classList.add("pVectoir", "p-1", "bg-[#243B53]", "text-[#F8FAFC]", "rounded-md");
             const pUpdateScore = document.createElement("p");
-            pUpdateScore.classList.add("editScore", "bg-sky-900", "p-1", "rounded-md");
+            pUpdateScore.classList.add("editScore", "bg-[#1E293B]", "p-1", "rounded-md");
             pUpdateScore.textContent = "Modifier le score"
             if (match.butsAtlas === match.butsAdversaire) {
                 pVectoir.textContent = "Nul";
-                pVectoir.classList.add("bg-gray-600");
-                pScore.classList.add("bg-gray-600", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-[#735019]");
+                pScore.classList.add("bg-[#735019]", "p-1", "rounded-md");
             }
             else if (match.butsAtlas > match.butsAdversaire) {
                 pVectoir.textContent = "Victoire";
-                pVectoir.classList.add("bg-green-600");
-                pScore.classList.add("bg-green-600", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-[#2F855A]");
+                pScore.classList.add("bg-[#2F855A]", "p-1", "rounded-md");
             }
             else {
                 pVectoir.textContent = "Défaite";
-                pVectoir.classList.add("bg-red-600");
-                pScore.classList.add("bg-red-600", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-[#8E3347]");
+                pScore.classList.add("bg-[#8E3347]", "p-1", "rounded-md");
             }
             if (match.domicile) {
                 pScore.textContent = `${match.butsAtlas} - ${match.butsAdversaire}`;
