@@ -63,7 +63,7 @@ export function afficherJoueur(joueurs) {
 export function ajouterJoueur(joueurs, modification, actualiserAffichage) {
     // joueurs=[];
     const form = document.querySelector("#monForm");
-
+    const modalJoueur = document.querySelector(".modal-ajout");
     form.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -76,7 +76,7 @@ export function ajouterJoueur(joueurs, modification, actualiserAffichage) {
         const nom = validNom(inputName.value);
         const nombre = validNumero(inputNumber.value, joueurs, modification);
         const age = validAge(inputAge.value);
-        const post = validPost(selectPost.value, joueurs);
+        const post = validPost(selectPost.value, joueurs,modification);
         const status = validStatus(selectStatus.value);
         // let valid = true;
 
@@ -110,9 +110,11 @@ export function ajouterJoueur(joueurs, modification, actualiserAffichage) {
         }
         enregistrerJoueurs(joueurs);
 
-        actualiserAffichage();
+        actualiserAffichage(joueurs);
 
         initialiserModalAjout();
+        modalJoueur.classList.add("hidden")
+
     });
 
 }
@@ -131,7 +133,7 @@ export function suprimer(btn, joueurs, actualiserAffichage) {
     joueurs.splice(index, 1);
 
     enregistrerJoueurs(joueurs);
-    actualiserAffichage();
+    actualiserAffichage(joueurs);
 }
 
 
@@ -139,7 +141,7 @@ export function updateJoueur(joueurs, modification) {
     document.addEventListener("click", (event) => {
         const button = event.target.closest(".edit");
         if (button) {
-
+            initialiserModalAjout()
             modification.index = modifier(button, joueurs);
         }
     })

@@ -222,3 +222,16 @@ export function deleteMatch(btn, matchs) {
     enregistrerMatchs(matchs);
     afficherMatchs(matchs);
 }
+
+export function searchMatch(matchs) {
+    document.addEventListener("input", (e) => {
+        const searchMatch = e.target.closest(".searchMatch");
+        
+        if (!searchMatch) return;
+            const cherch = searchMatch.value.toLowerCase().trim();
+            const searchs = matchs.filter((match) => {
+                return match.adversaire.toLowerCase().includes(cherch);
+            })
+            afficherMatchs(searchs);
+    })
+}

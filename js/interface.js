@@ -11,18 +11,7 @@ export function modalOpenAndClose() {
     btnAjout.addEventListener("click", () => {
 
 
-        const inputName = document.querySelector("input[type='text']");
-        const numberInput = document.querySelector('input[name="numero"]');
-        const inputAge = document.querySelector('input[name="age"]');
-        const selectPost = document.querySelector('select[name="post"]');
-        const selectStatus = document.querySelector('select[name="status"]');
-        inputName.value = "";
-        numberInput.value = "";
-        inputAge.value = "";
-        selectPost.value = "";
-        selectStatus.value = "";
-
-
+        initialiserModalAjout()
         modalAjout.classList.remove("hidden");
 
     })

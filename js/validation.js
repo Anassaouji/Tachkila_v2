@@ -51,16 +51,16 @@ export function validAge(age) {
     }
 }
 
-export function validPost(post, joueurs) {
+export function validPost(post, joueurs,modification) {
     const errorPost = document.querySelector(".error-post");
-    const gardiens = joueurs.filter((joueur) => {
-        return joueur.poste == "GB";
-    });
     errorPost.textContent = "";
+    const gardiens = joueurs.filter((joueur,index) => {
+        return joueur.poste === "GB" && index !== modification.index;
+    });
     if (post === "") {
         errorPost.textContent = "vous devrez choisir un option";
     }
-    else if (gardiens.length >= 2) {
+    else if (post === "GB" && gardiens.length >= 2) {
         errorPost.textContent = "vous avez depasse le nombre de Gardien a ajouter";
     }
     else {

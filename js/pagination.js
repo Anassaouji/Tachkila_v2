@@ -47,6 +47,7 @@ export function pagination(joueurs, joueurParPage, currentPage, actualiserAffich
         listeJoueurs = nouvelleListe;
 
         currentPage = 1;
+        // currentPage = actualiserAffichage(listeJoueurs, currentPage);
 
         actualiserAffichage(listeJoueurs, currentPage);
     }

@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- <script type="module" src="../js/match/page-matchs.js"></script> -->
+    <script type="module" src="../js/composition/page-composition.js"></script>
 </head>
 
 <body>
@@ -58,6 +58,129 @@
             </div>
         </div>
     </header>
+    <main class="container min-w-full h-[100vh] grid grid-cols-[25%_1fr] grid-rows-1">
+        <aside class="aside col-start-1 row-start-1 bg-[#1e293b] border-r border-r-[#ffffff45] overflow-y-scroll">
+            <div class="!m-4 text-white">
+                <!-- <button class="btn-ajout bg-green-500 !p-3  text-white rounded-[10px] w-full">Ajouter un joueur</button> -->
+                <!-- <div class="modal-ajout hidden bg-blue-900 rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[23%] 
+                    lg:w-[30%] md:w-1/2 
+                    ">
+                    <div class="!p-4">
+                        <div class="flex justify-between !mb-5">
+                            <p>Ajouter un joueur</p>
+                            <button class="btn-hidden">⨉</button>
+                        </div>
+                        <form id="monForm">
+                            <div class="flex flex-col w-full">
+                                <label for="nom">Nom complet</label>
+                                <input type="text" placeholder="Ex: ANASS AOUJI" id="nom"
+                                    class="border-2 rounded-[4px] !p-1">
+                                <span class="text-red-500 text-sm error-name"></span>
+                            </div>
+                            <div class="!mt-7">
+                                <p>Post</p>
+                                <div class="">
+                                    <div class="flex w-full gap-2 !mb-2">
+                                        <div class="flex items-center w-1/2 gap-2 !px-4  border-1 rounded-[10px]">
+                                            <input type="radio" value="Gardien" name="poste" id="gardien">
+                                            <label for="gardien">Gardien</label>
+                                        </div>
+
+                                        <div class="flex items-center w-1/2 gap-2 !px-4 border-1 rounded-[10px]">
+                                            <input type="radio" value="Defenseur" name="poste" id="defenseur">
+                                            <label for="defenseur">Défenseur</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full gap-2 !mb-2">
+                                        <div class="flex items-center w-1/2 gap-2 !px-4 border-1 rounded-[10px]">
+                                            <input type="radio" value="Milieu" name="poste" id="milieu" class="">
+                                            <label for="milieu">Milieur</label>
+                                        </div>
+                                        <div class="flex items-center w-1/2 gap-2 !px-4 border-1 rounded-[10px]">
+                                            <input type="radio" value="Attaquant" name="poste" id="attaquant">
+                                            <label for="attaquant">Attaquant</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <span class="text-red-500 text-sm error-post"></span>
+                            </div>
+                            <div class="flex flex-col !my-6">
+                                <label for="num">Numéro (1 à 99)</label>
+                                <input type="number" name="num" id="num" placeholder="EX.7"
+                                    class="border-1 rounded-[10px] !px-2">
+                                <span class="text-red-500 text-sm error-number"></span>
+                            </div>
+                            <div class="flex justify-end gap-2">
+                                <button type="reset"
+                                    class="btn-annule bg-slate-600 !py-1 !px-2 rounded-[10px]">Annuler</button>
+                                <button class="bg-green-500 !py-1 !px-2 rounded-[10px]">Ajouter</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+                <div class="flex justify-between !my-4">
+                    <p>Effectif</p>
+                    <p class="nombreJoueur border-1 rounded-[10px] !p-1">joueur(s)</p>
+                </div>
+                <div>
+                    <span>
+                        Cliquez sur un joueur placé pour voir sa case sur le terrain.
+                    </span>
+                    <span>
+                        <img class="inline" src="../images/edit-2.svg" alt="modifier"><span>pour modifier.</span>
+                    </span>
+                    <span>
+                        <img class="inline" src="../images/trash-2.svg" alt="suppreme"><span>pour supprimer.</span>
+                    </span>
+                </div>
+                <div class="remplace w-full rounded-[10px] border-2 border-dashed !mt-4 !p-5 text-center">
+                    <p>
+                        Aucun joueur pour le moment.
+                    </p>
+                </div>
+            </div>
+        </aside>
+        <section class="section col-start-2 bg-[#0f172a] pb-[30px]">
+            <div class="terrain max-h-[89%] text-[10px]" id="terrain"></div>
+            <p class="text-center text-white">
+                Gardien à gauche → attaque à droite. Choisissez la position de chaque joueur dans la liste. Joueurs
+                placés: <span class="counter-joueurs">0 / 11</span>
+            </p>
+        </section>
+        <!-- Modal de confirmation de suppression -->
+        <div id="modalDelete" class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center">
+
+            <div class="w-full max-w-md rounded-xl bg-sky-900 !p-6 !mx-4">
+
+                <!-- Titre -->
+                <h2 class="text-xl font-bold text-white !mb-3">
+                    Confirmer la suppression
+                </h2>
+
+                <!-- Message -->
+                <p class="text-white !mb-6">
+                    Êtes-vous sûr de vouloir supprimer ce joueur ?
+                    Cette action est irréversible.
+                </p>
+
+                <!-- Boutons -->
+                <div class="flex justify-end gap-3">
+
+                    <button id="cancelDelete" type="button" class="rounded-lg border border-gray-300 !px-4 !py-2
+                           text-white hover:bg-gray-100">
+                        Annuler
+                    </button>
+
+                    <button id="confirmDelete" type="button" class="rounded-lg bg-red-600 !px-4 !py-2
+                           text-white hover:bg-red-700">
+                        Confirmer
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

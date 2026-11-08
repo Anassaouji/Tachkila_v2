@@ -1,0 +1,181 @@
+
+
+.section .terrain {
+    min-width: 700px;
+    margin: 75px 40px 10px 40px;
+    background-color: #070d1f;
+    background-image: url(../images/terrain.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ffffff45;
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 8px;
+    grid-template-areas:
+        ". . . . . . . . . . . ."
+        ". . . DG DG . . MG MG . . ."
+        ". . . . . . . . . . BU1 BU1"
+        "GB GB DC1 DC1 . . MC1 MC1 . . . ."
+        "GB GB . . . . . . . . . ."
+        "GB GB DC2 DC2 . . MC2 MC2 . . . ."
+        ". . . . . . . . . . BU2 BU2"
+        ". . . DD DD . . MD MD . . ."
+        ". . . . . . . . . . . .";
+}
+
+.section .terrain .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: #141e30; */
+    /* border: 1px solid #202c40; */
+    border-radius: 8px;
+    min-width: 0;
+    min-height: 45px;
+}
+
+
+.col16 {
+    grid-area: DG;
+    background-color: rgb(3, 3, 84) !important;
+    border: 3px dashed rgb(68, 130, 245) !important;
+    color: rgb(68, 130, 245);
+}
+
+.col39 {
+    grid-area: DC1;
+    background-color: rgb(3, 3, 84) !important;
+    border: 3px dashed rgb(68, 130, 245) !important;
+    color: rgb(68, 130, 245);
+}
+
+.col63 {
+    grid-area: DC2;
+    background-color: rgb(3, 3, 84) !important;
+    border: 3px dashed rgb(68, 130, 245) !important;
+    color: rgb(68, 130, 245);
+}
+
+.col88 {
+    grid-area: DD;
+    background-color: rgb(3, 3, 84) !important;
+    border: 3px dashed rgb(68, 130, 245) !important;
+    color: rgb(68, 130, 245);
+}
+
+.col20 {
+    grid-area: MG;
+    background-color: rgb(1, 45, 1) !important;
+    border: 3px dashed rgb(110, 247, 117) !important;
+    color: rgb(110, 247, 117);
+}
+
+.col43 {
+    grid-area: MC1;
+    background-color: rgb(1, 45, 1) !important;
+    border: 3px dashed rgb(110, 247, 117) !important;
+    color: rgb(110, 247, 117);
+}
+
+.col67 {
+    grid-area: MC2;
+    background-color: rgb(1, 45, 1) !important;
+    border: 3px dashed rgb(110, 247, 117) !important;
+    color: rgb(110, 247, 117);
+}
+
+.col92 {
+    grid-area: MD;
+    background-color: rgb(1, 45, 1) !important;
+    border: 3px dashed rgb(110, 247, 117) !important;
+    color: rgb(110, 247, 117);
+}
+
+.col35 {
+    grid-area: BU1;
+    background-color: rgb(63, 0, 0) !important;
+    border: 3px dashed rgb(255, 134, 134) !important;
+    color: rgb(255, 134, 134);
+}
+
+.col83 {
+    grid-area: BU2;
+    background-color: rgb(63, 0, 0) !important;
+    border: 3px dashed rgb(255, 134, 134) !important;
+    color: rgb(255, 134, 134);
+}
+
+.col37 {
+    grid-area: GB;
+    background-color: rgb(62, 62, 1) !important;
+    border: 3px dashed rgb(248, 248, 145) !important;
+}
+
+
+.col p {
+    font-weight: bold;
+    font-size: 1.25em;
+
+
+}
+
+/* ajout d" joueur */
+
+.container-divs {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.parent .child {
+    display: flex;
+    gap: 10px;
+
+
+}
+
+.parent .child .child1 {
+    border: 3px solid rgb(190, 101, 37);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(190, 101, 37);
+}
+
+.parent .child .child2>div:first-child {
+    font-weight: bold;
+}
+
+.parent .child .child2>div:last-child {
+    color: rgb(190, 101, 37);
+}
+
+
+
+@media(max-width:1023px) {
+    .container {
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 80px 30% 1fr;
+        grid-template-areas: "header" "aside" "section";
+    }
+
+    .section {
+        overflow-x: scroll;
+    }
+}
+
+/* @media(max-width:590px) {
+    .header .nav-center {
+        display: none;
+    }
+
+} */
