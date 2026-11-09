@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header class="bg-[#132238] text-[#F8FAFC] p-4 flex items-center justify-between border-b-2">
+    <header class="bg-[#132238] text-[#F8FAFC] p-4 flex items-center justify-between border-b-2 max-lg:flex-col max-lg:gap-3">
         <!-- Section Gauche : Logo + Titres -->
         <div class="flex items-center space-x-3">
             <!-- Icône / Logo vert -->
@@ -58,8 +58,8 @@
             </div>
         </div>
     </header>
-    <main class="container min-w-full h-[100vh] grid grid-cols-[25%_1fr] grid-rows-1">
-        <aside class="aside col-start-1 row-start-1 bg-[#132238] border-r border-r-[#486581] overflow-y-scroll">
+    <main class="container min-w-full h-[100vh] grid grid-cols-[25%_1fr] grid-rows-1 max-lg:flex max-lg:flex-col max-lg:h-auto">
+        <aside class="aside col-start-1 row-start-1 bg-[#132238] border-r border-r-[#486581] overflow-y-scroll max-lg:overflow-visible">
             <div class="!m-4 text-[#F8FAFC]">
                 <!-- <button class="btn-ajout bg-green-500 !p-3  text-white rounded-[10px] w-full">Ajouter un joueur</button> -->
                 <!-- <div class="modal-ajout hidden bg-blue-900 rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[23%] 
@@ -141,17 +141,17 @@
                 </div>
             </div>
         </aside>
-        <section class="section col-start-2 bg-[#0F172A] pb-[30px]">
-            <div class="terrain max-h-[89%] text-[10px]" id="terrain"></div>
+        <section class="section col-start-2 bg-[#0F172A] pb-[30px] overflow-x-auto max-lg:!overflow-x-auto">
+            <div class="terrain max-h-[89%] text-[10px] max-lg:!mx-4" id="terrain"></div>
             <p class="text-center text-[#F8FAFC]">
                 Gardien à gauche → attaque à droite. Choisissez la position de chaque joueur dans la liste. Joueurs
                 placés: <span class="counter-joueurs">0 / 11</span>
             </p>
         </section>
         <!-- Modal de confirmation de suppression -->
-        <div id="modalDelete" class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center">
+        <div id="modalDelete" class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center max-lg:left-0 max-lg:right-0 max-lg:top-0 max-lg:h-dvh max-lg:overflow-y-auto">
 
-            <div class="w-full max-w-md rounded-xl bg-[#1E293B] !p-6 !mx-4">
+            <div class="w-full max-w-md rounded-xl bg-[#1E293B] !p-6 !mx-4 max-lg:max-h-dvh max-lg:overflow-y-auto">
 
                 <!-- Titre -->
                 <h2 class="text-xl font-bold text-[#F8FAFC] !mb-3">
