@@ -19,11 +19,11 @@ export function afficherMatchs(matchs) {
     const divs = visibles.map((match) => {
         const divmatches = document.createElement("div");
         divmatches.dataset.id = match.id;
-        divmatches.classList.add("divmatches", "flex", "w-full", "bg-[#1E293B]", "my-6", "justify-between", "rounded-md", "p-6", "text-[#F8FAFC]");
+        divmatches.classList.add("divmatches", "flex", "w-full", "bg-[#1E293B]", "my-6", "justify-between", "rounded-md", "p-6", "text-[#F8FAFC]", "max-lg:flex-col", "max-lg:gap-4", "max-sm:p-3");
         const childParent1 = document.createElement("div");
         childParent1.classList.add("flex", "items-center")
         const child1 = document.createElement("div");
-        child1.classList.add("flex", "flex-col", "items-center", "w-[90px]", "bg-[#2F5C83]", "rounded-md", "p-3", "mr-4")
+        child1.classList.add("flex", "flex-col", "items-center", "w-[90px]", "bg-[#2F5C83]", "rounded-md", "p-3", "mr-4", "max-lg:shrink-0")
 
         const date = new Date(match.date + "T00:00:00");
         const day = date.toLocaleDateString("fr-FR", { weekday: "short" }).toUpperCase();
@@ -42,7 +42,7 @@ export function afficherMatchs(matchs) {
         const child2 = document.createElement("div");
         const pDomicile = document.createElement("p");
         const pMatch = document.createElement("p");
-        pMatch.classList.add("font-bold")
+        pMatch.classList.add("font-bold", "max-lg:wrap-anywhere")
         const pStade = document.createElement("p");
         pStade.classList.add("text-[#CBD5E1]")
         if (match.domicile) {
@@ -59,9 +59,9 @@ export function afficherMatchs(matchs) {
         child2.append(pDomicile, pMatch, pStade)
         childParent1.append(child1, child2);
         const childParent2 = document.createElement("div");
-        childParent2.classList.add("chilParend2", "flex", "items-center", "w-[30%]")
+        childParent2.classList.add("chilParend2", "flex", "items-center", "w-[30%]", "max-lg:w-full", "max-lg:gap-2")
         const childRight2 = document.createElement("div");
-        childRight2.classList.add("flex", "w-[12%]")
+        childRight2.classList.add("flex", "w-[12%]", "max-lg:w-auto", "max-lg:shrink-0")
         const img1 = document.createElement("img");
         img1.setAttribute("src", "../images/edit-2.svg")
         img1.classList.add("edit");
@@ -73,10 +73,10 @@ export function afficherMatchs(matchs) {
         const lienC = document.createElement("a");
         lienC.setAttribute("href", "./composition.html");
         lienC.textContent = "Voir la Composition";
-        lienC.classList.add("rounded-md", "border", "border-[#486581]", "p-2")
+        lienC.classList.add("rounded-md", "border", "border-[#486581]", "p-2", "max-lg:inline-block")
         divComposition.append(lienC);
         const childRight1 = document.createElement("div");
-        childRight1.classList.add("childright1", "flex", "flex-col", "gap-y-[20px]", "mr-4", "w-[84%]")
+        childRight1.classList.add("childright1", "flex", "flex-col", "gap-y-[20px]", "mr-4", "w-[84%]", "max-lg:mr-0", "max-lg:w-full", "max-lg:min-w-0")
         const divScore = document.createElement("div");
         divScore.classList.add("divScore")
         childRight1.append(divScore, divComposition);

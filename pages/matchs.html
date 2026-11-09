@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header class="bg-[#132238] text-[#F8FAFC] p-4 flex items-center justify-between border-b-2">
+    <header class="bg-[#132238] text-[#F8FAFC] p-4 flex items-center justify-between border-b-2 max-lg:flex-col max-lg:gap-3">
         <!-- Section Gauche : Logo + Titres -->
         <div class="flex items-center space-x-3">
             <!-- Icône / Logo vert -->
@@ -59,13 +59,14 @@
     </header>
 
     <main class="bg-[#0F172A]">
-        <section class="p-5">
+        <section class="p-5 max-sm:p-3">
             <div class="w-full flex justify-end">
                 <button class="btn-ajout-match text-[#0F172A] bg-[#2CB1BC] p-4 rounded-md mb-4">Ajouter un match</button>
             </div>
-            <div class="flex items-center w-full h-[80px] bg-[#1E293B] rounded-md gap-[20px]">
+            <div 
+            class="flex items-center w-full h-[80px] bg-[#1E293B] rounded-md gap-[20px] max-lg:h-auto max-lg:flex-col max-lg:gap-3 max-lg:p-3">
                 <div id="filtres"
-                    class="w-[20%] h-[41px] bg-[#243B53] border border-[#486581] rounded-lg p-1 flex items-center justify-between ml-[20px]">
+                    class="w-[20%] h-[41px] bg-[#243B53] border border-[#486581] rounded-lg p-1 flex items-center justify-between ml-[20px] max-lg:w-full max-lg:ml-0">
                     <button
                         class="bg-[#16636D] rounded-md text-[#F8FAFC] text-[#CBD5E1] font-semibold text-sm px-4 py-1.5 hover:text-[#F8FAFC]"
                         data-filtre="toutes">
@@ -80,7 +81,7 @@
                         Jouée
                     </button>
                 </div>
-                <div class="w-[75%] h-[41px] mr-[20px]">
+                <div class="w-[75%] h-[41px] mr-[20px] max-lg:w-full max-lg:mr-0">
                     <input type="search"
                         class="searchMatch h-full w-full bg-[#243B53] rounded-md border border-[#486581] text-[#F8FAFC] px-4"
                         placeholder="Recherche un adversaire ...">
@@ -92,7 +93,7 @@
         </section>
         <!-- Modal Score -->
         <div
-            class="modal-score hidden fixed top-[50%] right-[25%] bg-[#1E293B] w-[25%] h-[150px] text-[#F8FAFC] p-4 rounded-md">
+            class="modal-score hidden border border-2 border-gray-700 fixed top-[50%] right-[25%] bg-[#1E293B] w-[25%] h-[150px] text-[#F8FAFC] p-4 rounded-md max-lg:left-4 max-lg:right-4 max-lg:w-auto max-lg:h-auto max-lg:-translate-y-1/2 max-lg:max-h-dvh max-lg:overflow-y-auto">
             <form id="modalS">
                 <div class="flex w-[100%] justify-between">
                     <div class="res1 w-[45%]">
@@ -106,7 +107,7 @@
                             id="score2" name="score" placeholder="entre un nombre">
                     </div>
                 </div>
-                <div class="btnsScore flex justify-end gap-[10px] mt-10">
+                <div class="btnsScore flex justify-end gap-[10px] mt-10 max-lg:flex-wrap max-lg:mt-4">
                     <button class="anuleS bg-[#243B53] p-1 rounded-md" type="reset">Anuller</button>
                     <button class="ajouterScore bg-[#16636D] p-1 rounded-md">Enregistrer</button>
                 </div>
@@ -114,7 +115,7 @@
         </div>
         <!-- modale Ajouter Match ---------------------------------modale-------------->
         <div class="hidden modal-match text-[#F8FAFC] bg-[#1E293B] rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[30%] 
-                    lg:w-[40%] md:w-1/2 ">
+                    lg:w-[40%] md:w-1/2 max-md:w-11/12 max-lg:max-h-dvh max-lg:overflow-y-auto ">
             <div class="!p-4">
                 <div class="flex justify-between !mb-5">
                     <p>Ajouter un Match</p>
@@ -155,11 +156,11 @@
                     <div class="mb-7">
                         <p>Lieu Du match</p>
                         <div class="flex h-[32px] mt-2 gap-2">
-                            <div class="flex items-center w-1/2 gap-2 !px-4  border-1 rounded-[10px] bg-[#1E293B]">
+                            <div class="flex items-center w-1/2 gap-2 !px-4 max-sm:!px-2  border-1 rounded-[10px] bg-[#1E293B]">
                                 <input type="radio" value="true" name="domicile" id="domicile">
                                 <label for="domicile">Domicile</label>
                             </div>
-                            <div class="flex items-center w-1/2 gap-2 !px-4 border-1 rounded-[10px] bg-[#1E293B]">
+                            <div class="flex items-center w-1/2 gap-2 !px-4 max-sm:!px-2 border-1 rounded-[10px] bg-[#1E293B]">
                                 <input type="radio" value="false" name="domicile" id="exterieur">
                                 <label for="exterieur">Exterieur</label>
                             </div>
@@ -175,9 +176,9 @@
         </div>
 
         <!-- Modal de confirmation de suppression -->
-        <div id="modalDelete" class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center">
+        <div id="modalDelete" class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center max-lg:left-0 max-lg:right-0 max-lg:top-0 max-lg:h-dvh max-lg:overflow-y-auto">
 
-            <div class="w-full max-w-md rounded-xl bg-[#1E293B] !p-6 !mx-4">
+            <div class="w-full max-w-md rounded-xl bg-[#1E293B] !p-6 !mx-4 max-lg:max-h-dvh max-lg:overflow-y-auto">
 
                 <!-- Titre -->
                 <h2 class="text-xl font-bold text-[#F8FAFC] !mb-3">
