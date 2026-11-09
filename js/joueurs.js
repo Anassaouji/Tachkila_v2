@@ -8,11 +8,11 @@ import { initialiserModalAjout } from "./interface.js";
 
 export function afficherJoueur(joueurs) {
     const articles = document.querySelector(".article");
-    articles.classList.add("mt-[40px]", "grid", "grid-cols-4", "gap-4")
+    articles.classList.add("mt-[40px]", "grid", "grid-cols-1", "md:grid-cols-2", "xl:grid-cols-4", "gap-4")
     articles.innerHTML = "";
     joueurs.forEach((joueur) => {
         const article = document.createElement("div");
-        article.classList.add("articlParent", "p-4", "rounded-[8px]", "bg-[#1E293B]", "max-h-[190px]");
+        article.classList.add("articlParent", "p-4", "rounded-[8px]", "bg-[#1E293B]", "max-h-[190px]", "max-xl:max-h-none");
         article.dataset.id = joueur.id;
         const articleHero = document.createElement("div");
         articleHero.classList.add("flex", "items-center")
@@ -33,12 +33,12 @@ export function afficherJoueur(joueurs) {
         paraAge.textContent = `Age : ${joueur.age} ans`;
 
         const divFoot = document.createElement("div");
-        divFoot.classList.add("flex", "items-center", "justify-between", "mt-[30px]");
+        divFoot.classList.add("flex", "items-center", "justify-between", "mt-[30px]", "max-xl:flex-wrap", "max-xl:gap-2");
         const paraEnform = document.createElement("p");
         paraEnform.textContent = joueur.statut;
-        paraEnform.classList.add("px-[3px]", "rounded-[5px]")
+        paraEnform.classList.add("px-[3px]", "rounded-[5px]", "whitespace-nowrap")
         const divIcons = document.createElement("div");
-        divIcons.classList.add("flex", "items-center", "gap-4");
+        divIcons.classList.add("flex", "items-center", "gap-4", "shrink-0");
         const paraCapitan = document.createElement("p");
         paraCapitan.textContent = "C";
         paraCapitan.classList.add("capitane", "border", "w-[30px]", "text-center", "font-bold", "rounded-[6px]", "cursor-pointer")

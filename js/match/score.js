@@ -6,7 +6,7 @@ export function colorMatch(matchs) {
             if (!parent) return;
             const childright1 = parent.querySelector(".childright1");
             const divScore2 = document.createElement("div");
-            divScore2.classList.add("divResultat", "flex", "w-full", "justify-between", "h-[40px]", "items-center")
+            divScore2.classList.add("divResultat", "flex", "w-full", "justify-between", "h-[40px]", "items-center", "max-lg:h-auto", "max-lg:flex-wrap", "max-lg:gap-2")
             const pScore = document.createElement("p");
             pScore.classList.add("pScore", "font-bold")
             const pVectoir = document.createElement("p");
