@@ -19,11 +19,11 @@ export function afficherMatchs(matchs) {
     const divs = visibles.map((match) => {
         const divmatches = document.createElement("div");
         divmatches.dataset.id = match.id;
-        divmatches.classList.add("divmatches", "flex", "w-full", "bg-[#1E293B]", "my-6", "justify-between", "rounded-md", "p-6", "text-[#F8FAFC]", "max-lg:flex-col", "max-lg:gap-4", "max-sm:p-3");
+        divmatches.classList.add("divmatches", "flex", "w-full", "border-2", "my-6", "justify-between", "rounded-md", "p-6", "text-[#F8FAFC]", "max-lg:flex-col", "max-lg:gap-4", "max-sm:p-3");
         const childParent1 = document.createElement("div");
         childParent1.classList.add("flex", "items-center")
         const child1 = document.createElement("div");
-        child1.classList.add("flex", "flex-col", "items-center", "w-[90px]", "bg-[#2F5C83]", "rounded-md", "p-3", "mr-4", "max-lg:shrink-0")
+        child1.classList.add("flex", "flex-col", "items-center", "w-[90px]", "bg-[#FF5A4E]","text-bold", "rounded-md", "p-3", "mr-4", "max-lg:shrink-0")
 
         const date = new Date(match.date + "T00:00:00");
         const day = date.toLocaleDateString("fr-FR", { weekday: "short" }).toUpperCase();
@@ -47,12 +47,12 @@ export function afficherMatchs(matchs) {
         pStade.classList.add("text-[#CBD5E1]")
         if (match.domicile) {
             pDomicile.textContent = "Domicile";
-            pDomicile.classList.add("p-2", "bg-[#243B53]", "size-fit", "rounded-md")
+            pDomicile.classList.add("p-2", "bg-green-800", "size-fit", "rounded-md")
             pMatch.textContent = `Atlas FC vs ${match.adversaire}`
         }
         else {
             pDomicile.textContent = "Exterieur";
-            pDomicile.classList.add("p-2", "bg-[#243B53]", "size-fit", "rounded-md")
+            pDomicile.classList.add("p-2", "bg-red-600", "size-fit", "rounded-md")
             pMatch.textContent = `${match.adversaire} vs Atlas FC`
         }
         pStade.textContent = match.lieu;
@@ -84,7 +84,7 @@ export function afficherMatchs(matchs) {
 
         if (estPassee(match) && match.butsAtlas === null && match.butsAdversaire === null) {
             const btnScore = document.createElement("button");
-            btnScore.classList.add("btnScore", "p-2", "rounded-md", "bg-[#904700]")
+            btnScore.classList.add("btnScore", "p-2", "rounded-md", "bg-[#FF5A4E]")
             btnScore.textContent = "Saisir le Score";
             divScore.append(btnScore);
         }
@@ -99,8 +99,8 @@ export function afficherMatchs(matchs) {
     filtres.addEventListener("click", (e) => {
         if (e.target.tagName !== "BUTTON") return;
         filtre = e.target.dataset.filtre;
-        filtres.querySelectorAll("button").forEach((b) => b.classList.remove("bg-[#16636D]", "rounded-md", "text-[#F8FAFC]"));
-        e.target.classList.add("bg-[#16636D]", "rounded-md", "text-[#F8FAFC]");
+        filtres.querySelectorAll("button").forEach((b) => b.classList.remove("bg-[#FF5A4E]", "rounded-md", "text-[#F8FAFC]"));
+        e.target.classList.add("bg-[#FF5A4E]", "rounded-md", "text-[#F8FAFC]");
 
         afficherMatchs(matchs);
     });

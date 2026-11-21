@@ -1,14 +1,39 @@
+/* Scrollbar personnalisée */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #0b192e;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #5c7fa5;
+    border-radius: 10px;
+    border: 1px solid #1b2d45;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #8db5df;
+}
+
+/* Firefox */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #5c7fa5 #0b192e;
+}
 
 
 .section .terrain {
     min-width: 700px;
-    margin: 75px 40px 10px 40px;
+    margin: 10px 40px 10px 40px;
     background-color: #0F172A;
     background-image: url(../images/terrain.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    border: 1px solid #486581;
+    border: 3px solid #F4F1EA;
     padding: 10px;
     border-radius: 10px;
     display: grid;
@@ -19,9 +44,9 @@
         ". . . . . . . . . . . ."
         ". . . DG DG . . MG MG . . ."
         ". . . . . . . . . . BU1 BU1"
-        "GB GB DC1 DC1 . . MC1 MC1 . . . ."
+        ". . DC1 DC1 . . MC1 MC1 . . . ."
         "GB GB . . . . . . . . . ."
-        "GB GB DC2 DC2 . . MC2 MC2 . . . ."
+        ". . DC2 DC2 . . MC2 MC2 . . . ."
         ". . . . . . . . . . BU2 BU2"
         ". . . DD DD . . MD MD . . ."
         ". . . . . . . . . . . .";

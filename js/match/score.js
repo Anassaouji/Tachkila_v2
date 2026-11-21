@@ -8,26 +8,26 @@ export function colorMatch(matchs) {
             const divScore2 = document.createElement("div");
             divScore2.classList.add("divResultat", "flex", "w-full", "justify-between", "h-[40px]", "items-center", "max-lg:h-auto", "max-lg:flex-wrap", "max-lg:gap-2")
             const pScore = document.createElement("p");
-            pScore.classList.add("pScore", "font-bold")
+            pScore.classList.add("pScore", "font-bold","px-4")
             const pVectoir = document.createElement("p");
-            pVectoir.classList.add("pVectoir", "p-1", "bg-[#243B53]", "text-[#F8FAFC]", "rounded-md");
+            pVectoir.classList.add("pVectoir", "p-1","px-4", "bg-[#243B53]", "text-[#F8FAFC]", "rounded-md");
             const pUpdateScore = document.createElement("p");
-            pUpdateScore.classList.add("editScore", "bg-[#1E293B]", "p-1", "rounded-md");
+            pUpdateScore.classList.add("editScore", "bg-[#FF5A4E]", "px-4","py-1", "rounded-md");
             pUpdateScore.textContent = "Modifier le score"
             if (match.butsAtlas === match.butsAdversaire) {
                 pVectoir.textContent = "Nul";
-                pVectoir.classList.add("bg-[#735019]");
-                pScore.classList.add("bg-[#735019]", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-slate-700");
+                pScore.classList.add("bg-slate-700", "p-1", "rounded-md");
             }
             else if (match.butsAtlas > match.butsAdversaire) {
                 pVectoir.textContent = "Victoire";
-                pVectoir.classList.add("bg-[#2F855A]");
-                pScore.classList.add("bg-[#2F855A]", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-green-700");
+                pScore.classList.add("bg-green-700", "p-1", "rounded-md");
             }
             else {
                 pVectoir.textContent = "Défaite";
-                pVectoir.classList.add("bg-[#8E3347]");
-                pScore.classList.add("bg-[#8E3347]", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-red-600");
+                pScore.classList.add("bg-red-600", "p-1", "rounded-md");
             }
             if (match.domicile) {
                 pScore.textContent = `${match.butsAtlas} - ${match.butsAdversaire}`;
