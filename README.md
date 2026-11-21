@@ -6,7 +6,7 @@ Ce projet constitue une évolution de Tachkila V1, avec une architecture JavaScr
 
 ## 🌐 Démonstration
 
-- **Application en ligne :** [https://tachkilav2-seven.vercel.app/]
+- **Application en ligne :** [Demo](https://tachkilav2-seven.vercel.app/)
 - **Repository GitHub :** [(https://github.com/Anassaouji/Tachkila_v2.git)]
 - **Planification :** [https://aoujianass.atlassian.net/jira/software/projects/TACHKILAV2/boards/35]
 - **Presentation :** [https://canva.link/vu55yuu9cj5u05h]
