@@ -92,7 +92,7 @@ export function ajouterJoueur(joueurs, modification, actualiserAffichage) {
         const nom = validNom(inputName.value);
         const nombre = validNumero(inputNumber.value, joueurs, modification);
         const age = validAge(inputAge.value);
-        const post = validPost(selectPost.value, joueurs,modification);
+        const post = validPost(selectPost.value, joueurs, modification);
         const status = validStatus(selectStatus.value);
         // let valid = true;
 
@@ -311,7 +311,7 @@ export function rechercheEtFilter(joueurs, actualiserListe) {
             return rechercheNom && filtrePoste;
         });
 
-        actualiserListe(joueursFiltres);
+        actualiserListe(joueursFiltres, true);
     }
 
     // Recherche

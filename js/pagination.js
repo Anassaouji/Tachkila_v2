@@ -8,48 +8,54 @@ export function renderPage(joueurs, joueurParPage, currentPage) {
 }
 
 export function pagination(joueurs, joueurParPage, currentPage, actualiserAffichage) {
-
     const precedent = document.querySelector(".precedent");
     const suivant = document.querySelector(".suivant");
 
-    // Liste actuelle
     let listeJoueurs = joueurs;
 
-    // Afficher la page initiale
-    actualiserAffichage(listeJoueurs, currentPage);
+    function afficherPage() {
+        const totalPages = Math.max(
+            1,
+            Math.ceil(listeJoueurs.length / joueurParPage)
+        );
 
-    // Bouton suivant
+        currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+        currentPage = actualiserAffichage(listeJoueurs, currentPage);
+
+        precedent.disabled = currentPage === 1;
+        suivant.disabled = currentPage === totalPages;
+    }
+
+    afficherPage();
+
     suivant.addEventListener("click", () => {
-
-        const totalPages = Math.ceil(listeJoueurs.length / joueurParPage);
+        const totalPages = Math.max(
+            1,
+            Math.ceil(listeJoueurs.length / joueurParPage)
+        );
 
         if (currentPage < totalPages) {
-
             currentPage++;
-            actualiserAffichage(listeJoueurs, currentPage);
+            afficherPage();
         }
     });
 
-    // Bouton précédent
     precedent.addEventListener("click", () => {
-
         if (currentPage > 1) {
-
             currentPage--;
-
-            actualiserAffichage(listeJoueurs, currentPage);
+            afficherPage();
         }
     });
 
-    // Fonction pour actualiser la liste
-    function actualiserListe(nouvelleListe) {
-
+    function actualiserListe(nouvelleListe, resetPage = false) {
         listeJoueurs = nouvelleListe;
 
-        currentPage = 1;
-        // currentPage = actualiserAffichage(listeJoueurs, currentPage);
+        if (resetPage) {
+            currentPage = 1;
+        }
 
-        actualiserAffichage(listeJoueurs, currentPage);
+        afficherPage();
     }
 
     return actualiserListe;

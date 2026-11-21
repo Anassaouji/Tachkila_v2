@@ -22,7 +22,7 @@ const currentPage = Number(sessionStorage.getItem("currentPage")) || 1;
 const actualiserListe = pagination(joueurs, 8, currentPage, actualiserAffichage);
 
 // Ajouter
-ajouterJoueur(joueurs, modification, actualiserAffichage);
+ajouterJoueur(joueurs, modification, actualiserListe);
 
 // Delete
 confirmDeleteJoueur(joueurs, actualiserListe);
