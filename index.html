@@ -9,9 +9,10 @@
     <script type="module" src="./js/page-effectif.js"></script>
 </head>
 
-<body>
+<body class="bg-[url(./images/bg-image2.png)] text-[#F4F1EA]">
 
-    <header class="bg-[#132238] text-[#F8FAFC] p-4 flex items-center justify-between border-b-2 max-lg:flex-col max-lg:gap-3">
+    <header
+        class="sticky top-0 text-[#F4F1EA] p-4 flex items-center justify-between border-b-2 max-lg:flex-col max-lg:gap-3">
         <!-- Section Gauche : Logo + Titres -->
         <div class="flex items-center space-x-3">
             <!-- Icône / Logo vert -->
@@ -22,12 +23,12 @@
             <!-- Texte TACHKILA / ATLAS FC -->
             <div>
                 <h1 class="font-bold text-lg tracking-wide leading-none">TACHKILA</h1>
-                <p class="text-xs text-[#94A3B8] font-medium mt-1">ATLAS FC</p>
+                <p class="text-xs text-[#FF5A4E] font-medium mt-1">ATLAS FC</p>
             </div>
         </div>
 
         <div class="bg-[#243B53] border border-[#486581] rounded-lg p-1 flex items-center space-x-1">
-            <button class="bg-[#2CB1BC] text-[#0F172A] font-semibold text-sm px-4 py-1.5 rounded-md">
+            <button class="bg-[#FF5A4E] text-[#F4F1EA] font-bold text-sm px-4 py-1.5 rounded-md">
                 <a href="./index.html">Effectif</a>
             </button>
             <button class="text-[#CBD5E1] font-semibold text-sm px-4 py-1.5 hover:text-[#F8FAFC]">
@@ -59,42 +60,145 @@
         </div>
     </header>
 
-    <main class="bg-[#0F172A] text-[#F8FAFC] p-20 max-lg:p-4">
+    <main class="text-[#F8FAFC] p-20 max-lg:p-4">
         <section class="">
             <div class="flex justify-end mb-4">
-                <button class="btn-ajout bg-[#2CB1BC] !p-3  text-[#0F172A] rounded-[10px] w-[20%] max-lg:w-auto">Ajouter un
+                <button
+                    class="btn-ajout bg-[#FF5A4E] !p-3  text-[#F4F1EA] rounded-[10px] w-[20%] max-lg:w-auto cursor-pointer">Ajouter
+                    un
                     joueur</button>
             </div>
-            <div class="p-4 flex bg-[#1E293B] rounded-[10px] items-center max-lg:flex-col max-lg:gap-3">
-                <div class="w-[75%] mr-5 max-lg:w-full max-lg:mr-0">
-                    <input type="search" class="rounded-[6px] h-[40px] w-full border border-[#486581] outline-none px-2"
-                        placeholder="Recherche un joueur par nom..." name="search">
+            <div class="flex rounded-[10px] items-center max-lg:flex-col max-lg:gap-3">
+                <div class="flex gap-4 rounded-[10px] max-lg:flex-wrap max-lg:justify-center max-lg:gap-0">
+                    <button class="w-[80px] btn-tous bg-[#16636D] p-2 m-1 rounded-[10px] cursor-pointer border 
+                        border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.45)] 
+                        hover:shadow-[0_0_22px_rgba(34,211,238,0.65)] transition-shadow duration-200">
+                        Tous
+                    </button>
+
+                    <!-- GB : Glow jaune -->
+                    <button class="w-[80px] btn-gb bg-[#483710] p-2 m-1 rounded-[10px] cursor-pointer
+                        border border-[#FBBF24]/50
+                        shadow-[0_0_15px_rgba(251,191,36,0.45)]
+                        hover:shadow-[0_0_22px_rgba(251,191,36,0.65)]
+                        hover:bg-[#5C4615]
+                        hover:-translate-y-0.5
+                        transition-all duration-200">
+                        GB
+                    </button>
+
+                    <!-- DEF : Glow bleu -->
+                    <button class="w-[80px] btn-def bg-[#1B3557] p-2 m-1 rounded-[10px] cursor-pointer
+                        border border-[#60A5FA]/50
+                        shadow-[0_0_15px_rgba(96,165,250,0.45)]
+                        hover:shadow-[0_0_22px_rgba(96,165,250,0.65)]
+                        hover:bg-[#25476F]
+                        hover:-translate-y-0.5
+                        transition-all duration-200">
+                        DEF
+                    </button>
+
+                    <!-- MIL : Glow vert -->
+                    <button class="w-[80px] btn-mil bg-[#134235] p-2 m-1 rounded-[10px] cursor-pointer
+                        border border-[#34D399]/50
+                        shadow-[0_0_15px_rgba(52,211,153,0.45)]
+                        hover:shadow-[0_0_22px_rgba(52,211,153,0.65)]
+                        hover:bg-[#195744]
+                        hover:-translate-y-0.5
+                        transition-all duration-200">
+                        MIL
+                    </button>
+
+                    <!-- ATT : Glow rose -->
+                    <button class="w-[80px] btn-att bg-[#512635] p-2 m-1 rounded-[10px] cursor-pointer
+                        border border-[#FB7185]/50
+                        shadow-[0_0_15px_rgba(251,113,133,0.45)]
+                        hover:shadow-[0_0_22px_rgba(251,113,133,0.65)]
+                        hover:bg-[#693044]
+                        hover:-translate-y-0.5
+                        transition-all duration-200">
+                        ATT
+                    </button>
+
                 </div>
-                <div class="flex bg-[#0F172A] gap-6 rounded-[10px] max-lg:flex-wrap max-lg:justify-center max-lg:gap-0">
-                    <button class="btn-tous bg-[#16636D] p-2 m-1 rounded-[10px]">Tous</button>
-                    <button class="btn-gb bg-[#483710] p-2 m-1 rounded-[10px]">GB</button>
-                    <button class="btn-def bg-[#1B3557] p-2 m-1 rounded-[10px]">DEF</button>
-                    <button class="btn-mil bg-[#134235] p-2 m-1 rounded-[10px]">MIL</button>
-                    <button class="btn-att bg-[#512635] p-2 m-1 rounded-[10px]">ATT</button>
+                <div class="w-[75%] ml-5 max-lg:w-full max-lg:mr-0">
+                    <input type="search"
+                        class="rounded-[6px] h-[40px] w-full border-2 border-[#F8FAFC] outline-none px-2"
+                        placeholder="Recherche un joueur par nom..." name="search">
                 </div>
             </div>
             <article class="article h-[45vh] max-xl:h-auto">
 
             </article>
-            <div class="flex justify-between items-center mt-10 max-md:flex-col max-md:gap-3">
+
+            <div class="flex justify-between items-center mt-10 gap-4
+                        bg-[#080F20]/45 backdrop-blur-sm
+                        border border-[#294767]/70 rounded-xl
+                        px-5 py-4
+                        shadow-[0_8px_32px_rgba(0,0,0,0.25)]
+                        max-md:flex-col max-md:gap-3">
+
+                <!-- Nombre de joueurs -->
                 <div>
-                    <p>
-                        Affichage de <span class="parPage">8</span> sur <span class="nombreJoueurs">14</span> joueurs
+                    <p class="text-[#94A9C6] text-sm">
+                        Affichage de
+                        <span class="parPage text-[#F4F8FF] font-semibold">8</span>
+                        sur
+                        <span class="nombreJoueurs text-[#F4F8FF] font-semibold">14</span>
+                        joueurs
                     </p>
                 </div>
-                <div class="flex items-center gap-[8px]">
-                    <button class="precedent rounded-[5px] border border-[#486581] px-2 py-1 bg-[#243B53] cursor-pointer">Precedent</button>
-                    <p class="info-page"> Page <span class="page">1</span> / <span class="nPage">2 </span></p>
-                    <button class="suivant rounded-[5px] border border-[#486581] px-2 py-1 bg-[#243B53] cursor-pointer">Suivant</button>
+
+                <!-- Pagination -->
+                <div class="flex items-center gap-3">
+
+                    <!-- Bouton Précédent -->
+                    <button class="precedent rounded-lg px-4 py-2
+                        bg-[#FF5A4E] text-[#F4F1EA]
+                        cursor-pointer font-medium
+                        border border-[#FF8A80]/40
+                        shadow-[0_0_12px_rgba(255,90,78,0.30)]
+                        hover:shadow-[0_0_20px_rgba(255,90,78,0.55)]
+                        hover:bg-[#FF6B60]
+                        active:scale-[0.98]
+                        disabled:opacity-40 disabled:cursor-not-allowed
+                        disabled:shadow-none
+                        transition-all duration-200">
+                        Précédent
+                    </button>
+
+                    <!-- Numéro de page -->
+                    <p class="info-page bg-[#111F38]/80
+                  border border-[#294767]
+                  rounded-lg px-4 py-2
+                  text-[#94A9C6] text-sm
+                  whitespace-nowrap">
+                        Page
+                        <span class="page text-[#22D3EE] font-semibold">1</span>
+                        /
+                        <span class="nPage text-[#F4F8FF] font-semibold">2</span>
+                    </p>
+
+                    <!-- Bouton Suivant -->
+                    <button class="suivant rounded-lg px-4 py-2
+                        bg-[#FF5A4E] text-[#F4F1EA]
+                        cursor-pointer font-medium
+                        border border-[#FF8A80]/40
+                        shadow-[0_0_12px_rgba(255,90,78,0.30)]
+                        hover:shadow-[0_0_20px_rgba(255,90,78,0.55)]
+                        hover:bg-[#FF6B60]
+                        active:scale-[0.98]
+                        disabled:opacity-40 disabled:cursor-not-allowed
+                        disabled:shadow-none
+                        transition-all duration-200">
+                        Suivant
+                    </button>
+
                 </div>
             </div>
+
             <!-- modale ---------------------------------modale-------------->
-            <div class="hidden modal-ajout bg-[#1E293B] rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[30%] 
+            <div class="hidden modal-ajout bg-[#0a1428] border-2 border-[#F8FAFC] rounded-[10px] z-20 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:w-[30%] 
                     lg:w-[40%] md:w-1/2 max-md:w-11/12 max-lg:max-h-dvh max-lg:overflow-y-auto 
                     ">
                 <div class="!p-4">
@@ -156,15 +260,17 @@
                         <div class="flex justify-end gap-2">
                             <button type="reset"
                                 class="btn-annule bg-[#243B53] !py-1 !px-2 rounded-[10px]">Annuler</button>
-                            <button class="bg-[#16636D] !py-1 !px-2 rounded-[10px]">Ajouter</button>
+                            <button class="bg-[#FF5A4E] !py-1 !px-2 rounded-[10px]">Ajouter</button>
                         </div>
                     </form>
                 </div>
             </div>
             <!-- Modal de confirmation de suppression -->
-            <div id="modalDelete" class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center max-lg:left-0 max-lg:right-0 max-lg:top-0 max-lg:h-dvh max-lg:overflow-y-auto">
+            <div id="modalDelete"
+                class="fixed z-50 left-[30%] top-[20%] hidden items-center justify-center max-lg:left-0 max-lg:right-0 max-lg:top-0 max-lg:h-dvh max-lg:overflow-y-auto">
 
-                <div class="w-full max-w-md rounded-xl bg-[#1E293B] !p-6 !mx-4 max-lg:max-h-dvh max-lg:overflow-y-auto">
+                <div
+                    class="w-full max-w-md rounded-xl bg-[#0a1428] border-2 border-[#F8FAFC] !p-6 !mx-4 max-lg:max-h-dvh max-lg:overflow-y-auto">
 
                     <!-- Titre -->
                     <h2 class="text-xl font-bold text-[#F8FAFC] !mb-3">

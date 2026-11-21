@@ -12,7 +12,23 @@ export function afficherJoueur(joueurs) {
     articles.innerHTML = "";
     joueurs.forEach((joueur) => {
         const article = document.createElement("div");
-        article.classList.add("articlParent", "p-4", "rounded-[8px]", "bg-[#1E293B]", "max-h-[190px]", "max-xl:max-h-none");
+        article.classList.add(
+            "articlParent",
+            "p-4",
+            "rounded-xl",
+            "border",
+            "border-[#294767]",
+            "bg-[#111F38]/65",
+            "backdrop-blur-sm",
+            "shadow-[0_4px_18px_rgba(0,0,0,0.25)]",
+            "hover:border-[#3B82F6]",
+            "hover:shadow-[0_0_20px_rgba(59,130,246,0.30)]",
+            "hover:-translate-y-1",
+            "transition-all",
+            "duration-300",
+            "max-h-[190px]",
+            "max-xl:max-h-none"
+        );
         article.dataset.id = joueur.id;
         const articleHero = document.createElement("div");
         articleHero.classList.add("flex", "items-center")
@@ -36,7 +52,7 @@ export function afficherJoueur(joueurs) {
         divFoot.classList.add("flex", "items-center", "justify-between", "mt-[30px]", "max-xl:flex-wrap", "max-xl:gap-2");
         const paraEnform = document.createElement("p");
         paraEnform.textContent = joueur.statut;
-        paraEnform.classList.add("px-[3px]", "rounded-[5px]", "whitespace-nowrap")
+        paraEnform.classList.add("p-[5px]", "rounded-[6px]", "whitespace-nowrap")
         const divIcons = document.createElement("div");
         divIcons.classList.add("flex", "items-center", "gap-4", "shrink-0");
         const paraCapitan = document.createElement("p");
@@ -236,7 +252,7 @@ export function capitan(joueurs) {
             });
             document.querySelectorAll(".capitane").forEach((btn) => {
                 // button.style.backgroundColor = "";
-                btn.classList.remove("bg-[#2F855A]");
+                btn.classList.remove("bg-[#FF5A4E]");
             });
             const parent = btn.closest(".articlParent");
             const dataID = parent.dataset.id;
@@ -246,7 +262,7 @@ export function capitan(joueurs) {
             const joueur = joueurs[index];
             if (joueur) {
                 joueur.capitaine = true;
-                btn.classList.add("bg-[#2F855A]");
+                btn.classList.add("bg-[#FF5A4E]");
                 enregistrerJoueurs(joueurs);
             }
         }
@@ -265,7 +281,7 @@ export function coloriseCapitan(joueurs) {
         if (parent) {
             const capitaine = parent.querySelector(".capitane");
             if (capitaine) {
-                capitaine.classList.add("bg-[#2F855A]")
+                capitaine.classList.add("bg-[#FF5A4E]")
             }
         }
     }
