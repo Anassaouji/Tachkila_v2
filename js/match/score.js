@@ -6,28 +6,28 @@ export function colorMatch(matchs) {
             if (!parent) return;
             const childright1 = parent.querySelector(".childright1");
             const divScore2 = document.createElement("div");
-            divScore2.classList.add("divResultat", "flex", "w-full", "justify-between", "h-[40px]", "items-center", "max-lg:h-auto", "max-lg:flex-wrap", "max-lg:gap-2")
+            divScore2.classList.add("divResultat", "flex", "flex-wrap", "w-full", "items-center", "gap-2")
             const pScore = document.createElement("p");
-            pScore.classList.add("pScore", "font-bold","px-4")
+            pScore.classList.add("pScore", "font-bold", "px-3", "whitespace-nowrap")
             const pVectoir = document.createElement("p");
-            pVectoir.classList.add("pVectoir", "p-1","px-4", "bg-[#243B53]", "text-[#F8FAFC]", "rounded-md");
+            pVectoir.classList.add("pVectoir", "py-1", "px-3", "rounded-md", "whitespace-nowrap");
             const pUpdateScore = document.createElement("p");
-            pUpdateScore.classList.add("editScore", "bg-[#FF5A4E]", "px-4","py-1", "rounded-md");
+            pUpdateScore.classList.add("editScore", "bg-[#6366F1]", "px-3", "py-1", "text-sm", "rounded-[10px]", "text-[#F4F8FF]", "shadow-[0_0_15px_rgba(99,102,241,0.35)]", "hover:shadow-[0_0_25px_rgba(99,102,241,0.55)]", "hover:bg-[#818CF8]", "transition-all", "duration-200", "motion-reduce:transition-none", "cursor-pointer");
             pUpdateScore.textContent = "Modifier le score"
             if (match.butsAtlas === match.butsAdversaire) {
                 pVectoir.textContent = "Nul";
-                pVectoir.classList.add("bg-slate-700");
-                pScore.classList.add("bg-slate-700", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-slate-500/15", "text-[#94A3B8]", "ring-1", "ring-slate-500/25");
+                pScore.classList.add("bg-slate-500/15", "text-[#94A3B8]", "ring-1", "ring-slate-500/25", "p-1", "rounded-md");
             }
             else if (match.butsAtlas > match.butsAdversaire) {
                 pVectoir.textContent = "Victoire";
-                pVectoir.classList.add("bg-green-700");
-                pScore.classList.add("bg-green-700", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-green-500/10", "text-[#22C55E]", "ring-1", "ring-green-500/25");
+                pScore.classList.add("bg-green-500/10", "text-[#22C55E]", "ring-1", "ring-green-500/25", "p-1", "rounded-md");
             }
             else {
                 pVectoir.textContent = "Défaite";
-                pVectoir.classList.add("bg-red-600");
-                pScore.classList.add("bg-red-600", "p-1", "rounded-md");
+                pVectoir.classList.add("bg-red-500/10", "text-[#EF4444]", "ring-1", "ring-red-500/25");
+                pScore.classList.add("bg-red-500/10", "text-[#EF4444]", "ring-1", "ring-red-500/25", "p-1", "rounded-md");
             }
             if (match.domicile) {
                 pScore.textContent = `${match.butsAtlas} - ${match.butsAdversaire}`;
