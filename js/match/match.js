@@ -19,11 +19,11 @@ export function afficherMatchs(matchs) {
     const divs = visibles.map((match) => {
         const divmatches = document.createElement("div");
         divmatches.dataset.id = match.id;
-        divmatches.classList.add("divmatches", "flex", "w-full", "border-2", "my-6", "justify-between", "rounded-md", "p-6", "text-[#F8FAFC]", "max-lg:flex-col", "max-lg:gap-4", "max-sm:p-3");
+        divmatches.classList.add("divmatches", "flex", "flex-col", "lg:flex-row", "w-full", "border", "border-[#294767]", "my-4", "justify-between", "gap-4", "rounded-xl", "p-4", "text-[#F4F8FF]", "bg-[#111F38]/65", "backdrop-blur-sm", "shadow-[0_4px_18px_rgba(0,0,0,0.25)]", "hover:border-[#3B82F6]", "hover:shadow-[0_0_20px_rgba(59,130,246,0.20)]", "transition-all", "duration-200", "motion-reduce:transition-none");
         const childParent1 = document.createElement("div");
-        childParent1.classList.add("flex", "items-center")
+        childParent1.classList.add("flex", "items-center", "flex-1", "min-w-0", "gap-4")
         const child1 = document.createElement("div");
-        child1.classList.add("flex", "flex-col", "items-center", "w-[90px]", "bg-[#FF5A4E]","text-bold", "rounded-md", "p-3", "mr-4", "max-lg:shrink-0")
+        child1.classList.add("flex", "flex-col", "items-center", "w-20", "shrink-0", "bg-[#6366F1]", "text-white", "rounded-xl", "p-3", "[&>p:nth-child(2)]:text-2xl", "[&>p:nth-child(2)]:font-bold")
 
         const date = new Date(match.date + "T00:00:00");
         const day = date.toLocaleDateString("fr-FR", { weekday: "short" }).toUpperCase();
@@ -42,41 +42,41 @@ export function afficherMatchs(matchs) {
         const child2 = document.createElement("div");
         const pDomicile = document.createElement("p");
         const pMatch = document.createElement("p");
-        pMatch.classList.add("font-bold", "max-lg:wrap-anywhere")
+        pMatch.classList.add("font-bold", "text-lg", "break-words", "my-1")
         const pStade = document.createElement("p");
-        pStade.classList.add("text-[#CBD5E1]")
+        pStade.classList.add("text-[#94A9C6]", "text-sm")
         if (match.domicile) {
             pDomicile.textContent = "Domicile";
-            pDomicile.classList.add("p-2", "bg-green-800", "size-fit", "rounded-md")
+            pDomicile.classList.add("px-2", "py-1", "bg-blue-500/10", "text-blue-300", "text-xs", "size-fit", "rounded-md")
             pMatch.textContent = `Atlas FC vs ${match.adversaire}`
         }
         else {
             pDomicile.textContent = "Exterieur";
-            pDomicile.classList.add("p-2", "bg-red-600", "size-fit", "rounded-md")
+            pDomicile.classList.add("px-2", "py-1", "bg-purple-500/10", "text-purple-300", "text-xs", "size-fit", "rounded-md")
             pMatch.textContent = `${match.adversaire} vs Atlas FC`
         }
         pStade.textContent = match.lieu;
         child2.append(pDomicile, pMatch, pStade)
         childParent1.append(child1, child2);
         const childParent2 = document.createElement("div");
-        childParent2.classList.add("chilParend2", "flex", "items-center", "w-[30%]", "max-lg:w-full", "max-lg:gap-2")
+        childParent2.classList.add("chilParend2", "flex", "items-center", "gap-3", "w-full", "lg:w-auto", "lg:max-w-sm")
         const childRight2 = document.createElement("div");
-        childRight2.classList.add("flex", "w-[12%]", "max-lg:w-auto", "max-lg:shrink-0")
+        childRight2.classList.add("flex", "shrink-0", "gap-2")
         const img1 = document.createElement("img");
         img1.setAttribute("src", "../images/edit-2.svg")
-        img1.classList.add("edit");
+        img1.classList.add("edit", "p-0.5", "rounded-md", "cursor-pointer", "hover:bg-blue-500/20", "transition-colors", "duration-200");
         const img2 = document.createElement("img");
         img2.setAttribute("src", "../images/trash-2.svg")
-        img2.classList.add("delete");
+        img2.classList.add("delete", "p-0.5", "rounded-md", "cursor-pointer", "hover:bg-red-500/20", "transition-colors", "duration-200");
         childRight2.append(img1, img2);
         const divComposition = document.createElement("div");
         const lienC = document.createElement("a");
         lienC.setAttribute("href", "./composition.html");
         lienC.textContent = "Voir la Composition";
-        lienC.classList.add("rounded-md", "border", "border-[#486581]", "p-2", "max-lg:inline-block")
+        lienC.classList.add("inline-block", "rounded-lg", "border", "border-[#294767]", "bg-[#111F38]", "p-2", "text-sm", "hover:border-[#3B82F6]", "hover:text-[#22D3EE]", "transition-colors", "duration-200")
         divComposition.append(lienC);
         const childRight1 = document.createElement("div");
-        childRight1.classList.add("childright1", "flex", "flex-col", "gap-y-[20px]", "mr-4", "w-[84%]", "max-lg:mr-0", "max-lg:w-full", "max-lg:min-w-0")
+        childRight1.classList.add("childright1", "flex", "flex-col", "gap-2", "flex-1", "min-w-0")
         const divScore = document.createElement("div");
         divScore.classList.add("divScore")
         childRight1.append(divScore, divComposition);
@@ -84,7 +84,7 @@ export function afficherMatchs(matchs) {
 
         if (estPassee(match) && match.butsAtlas === null && match.butsAdversaire === null) {
             const btnScore = document.createElement("button");
-            btnScore.classList.add("btnScore", "p-2", "rounded-md", "bg-[#FF5A4E]")
+            btnScore.classList.add("btnScore", "p-2", "bg-[#6366F1]", "rounded-[10px]", "text-[#F4F8FF]", "shadow-[0_0_15px_rgba(99,102,241,0.35)]", "hover:shadow-[0_0_25px_rgba(99,102,241,0.55)]", "hover:bg-[#818CF8]", "transition-all", "duration-200", "motion-reduce:transition-none", "cursor-pointer")
             btnScore.textContent = "Saisir le Score";
             divScore.append(btnScore);
         }
@@ -99,8 +99,8 @@ export function afficherMatchs(matchs) {
     filtres.addEventListener("click", (e) => {
         if (e.target.tagName !== "BUTTON") return;
         filtre = e.target.dataset.filtre;
-        filtres.querySelectorAll("button").forEach((b) => b.classList.remove("bg-[#FF5A4E]", "rounded-md", "text-[#F8FAFC]"));
-        e.target.classList.add("bg-[#FF5A4E]", "rounded-md", "text-[#F8FAFC]");
+        filtres.querySelectorAll("button").forEach((b) => b.classList.remove("bg-[#6366F1]", "rounded-md", "text-[#F8FAFC]", "shadow-[0_0_15px_rgba(99,102,241,0.35)]"));
+        e.target.classList.add("bg-[#6366F1]", "rounded-md", "text-[#F8FAFC]", "shadow-[0_0_15px_rgba(99,102,241,0.35)]");
 
         afficherMatchs(matchs);
     });

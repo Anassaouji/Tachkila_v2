@@ -252,7 +252,7 @@ export function capitan(joueurs) {
             });
             document.querySelectorAll(".capitane").forEach((btn) => {
                 // button.style.backgroundColor = "";
-                btn.classList.remove("bg-[#FF5A4E]");
+                btn.classList.remove("bg-[#6366F1]");
             });
             const parent = btn.closest(".articlParent");
             const dataID = parent.dataset.id;
@@ -262,7 +262,7 @@ export function capitan(joueurs) {
             const joueur = joueurs[index];
             if (joueur) {
                 joueur.capitaine = true;
-                btn.classList.add("bg-[#FF5A4E]");
+                btn.classList.add("bg-[#6366F1]");
                 enregistrerJoueurs(joueurs);
             }
         }
@@ -281,7 +281,7 @@ export function coloriseCapitan(joueurs) {
         if (parent) {
             const capitaine = parent.querySelector(".capitane");
             if (capitaine) {
-                capitaine.classList.add("bg-[#FF5A4E]")
+                capitaine.classList.add("bg-[#6366F1]")
             }
         }
     }
