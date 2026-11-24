@@ -205,3 +205,20 @@
     }
 
 } */
+
+/* Composition layout for tablet and mobile, including 1024px. */
+@media (max-width: 1024px) {
+    main.container > .section { min-width: 0; width: 100%; overflow-x: auto; }
+    .section .terrain { width: 800px; min-width: 800px; height: 480px; max-height: none; margin:auto !important;}
+    .section .terrain .col { min-height: 0; }
+    .section .terrain .col p { font-size: 10px; overflow-wrap: anywhere; }
+    .section .terrain [data-numero] { min-width: 0; max-width: 100%; }
+    .section .terrain [data-numero] > div:first-child { flex-shrink: 0; width: 24px; height: 24px; padding-top: 2px; font-size: 10px; }
+    .section .terrain [data-numero] > div:last-child { min-width: 0; }
+    .aside .parent > div:first-child { flex-wrap: wrap; gap: 8px; align-items: center; }
+    .aside .parent .child { min-width: 0; }
+    .aside .parent .child1 { flex-shrink: 0; }
+    .aside .parent .child2 { min-width: 0; overflow-wrap: anywhere; }
+    .aside .parent > div:first-child > .child:last-child { white-space: nowrap; flex-shrink: 0; font-size: 12px; }
+    .aside .select { min-width: 0; max-width: 100%; }
+}
